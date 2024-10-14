@@ -83,112 +83,117 @@ function OutlookWindow() {
           </div>
 
           {/* Contenedor de emails */}
-          <div className="w-60 ml-2 border-blue-400 border-4">
-            {/* Email 1 */}
-            <div className="w-60 flex items-center">
-              <div className="w-8">
-                <img className="pixelated" src={PeopleIcon.src} />
-              </div>
-              <div className="ml-1">
-                <p className="leading-3 font-semibold">
-                  [URGENTE] Nuevos avistamientos detectados cerca de tu área
-                </p>
-                <p className="leading-3">
-                  Usted se encuentra en peligro, por favor revise este email
-                  para...
-                </p>
-              </div>
-            </div>
+          <div className="w-60 ml-2">
+            <ul className="tree-view">
+              {/* Email 1 */}
+              <li className="w-60 flex items-center">
+                <div className="w-8">
+                  <img className="pixelated" src={PeopleIcon.src} />
+                </div>
+                <div className="ml-3">
+                  <p className="leading-4 font-semibold">
+                    [URGENTE] Avistamientos detectados cerca de tu área
+                  </p>
+                  <p className="leading-4">
+                    Usted se encuentra en peligro, por favor revise este email
+                    para...
+                  </p>
+                </div>
+              </li>
 
-            {/* Email 2 */}
-            <div className="w-60 mt-2 flex items-center">
-              <div className="">
-                <img className="pixelated" src={PeopleIcon.src} />
-              </div>
-              <div className="ml-1 w-52">
-                <p className="leading-3 font-semibold">
-                  Estamos preocupados por ti, tu madre no hace sino llorar...
-                </p>
-                <p className="leading-3">Por favor contéstanos el teléfono.</p>
-              </div>
-            </div>
+              {/* Email 2 */}
+              <li className="w-60 mt-2 flex items-center">
+                <div className="">
+                  <img className="pixelated" src={PeopleIcon.src} />
+                </div>
+                <div className="ml-3 w-52">
+                  <p className="leading-4 font-semibold">
+                    Estamos preocupados por ti, tu madre no hace sino llorar...
+                  </p>
+                  <p className="leading-4">
+                    Por favor contéstanos el teléfono.
+                  </p>
+                </div>
+              </li>
 
-            {/* Email 3 */}
-            <div className="w-60 mt-2 flex items-center">
-              <div className="">
-                <img className="pixelated" src={PeopleIcon.src} />
-              </div>
-              <div className="ml-1 w-52">
-                <p className="leading-3 font-semibold">
-                  naranja araña administrador dictadura entidad tubería
-                </p>
-                <p className="leading-3">
-                  llamé a un taxista no a un taxidermista; me dijo que tal...
-                </p>
-              </div>
-            </div>
+              {/* Email 3 */}
+              <li className="w-60 mt-2 flex items-center">
+                <div className="">
+                  <img className="pixelated" src={PeopleIcon.src} />
+                </div>
+                <div className="ml-3 w-52">
+                  <p className="leading-4 font-semibold">
+                    naranja araña administrador dictadura entidad tubería
+                  </p>
+                  <p className="leading-4">
+                    llamé a un taxista no a un taxidermista; me dijo que tal...
+                  </p>
+                </div>
+              </li>
 
-            {/* Email 4 */}
-            <div className="w-60 mt-2 flex items-center">
-              <div className="">
-                <img className="pixelated" src={PeopleIcon.src} />
-              </div>
-              <div className="ml-1 w-52">
-                <p className="leading-3 font-semibold">
-                  Vomistar te envía la factura de tu servicio
-                </p>
-                <p className="leading-3">
-                  Estimado cliente, adjunto encontrará la factura para este...
-                </p>
-              </div>
-            </div>
+              {/* Email 4 */}
+              <li className="w-60 mt-2 flex items-center">
+                <div className="">
+                  <img className="pixelated" src={PeopleIcon.src} />
+                </div>
+                <div className="ml-3 w-52">
+                  <p className="leading-4 font-semibold">
+                    Vomistar te envía la factura de tu servicio
+                  </p>
+                  <p className="leading-4">
+                    Estimado cliente, adjunto encontrará la factura para este...
+                  </p>
+                </div>
+              </li>
 
-            {/* Email 5 */}
-            <div className="w-60 mt-2 flex items-center">
-              <div className="">
-                <img className="pixelated" src={PeopleIcon.src} />
-              </div>
-              <div className="ml-1 w-52">
-                <p className="leading-3 font-semibold">
-                  There were a segmentation fault caused by your last commit
-                </p>
-                <p className="leading-3">
-                  Please fix this disaster, we're counting on you to get the
-                  new...
-                </p>
-              </div>
-            </div>
+              {/* Email 5 */}
+              <li className="w-60 mt-2 flex items-center">
+                <div className="">
+                  <img className="pixelated" src={PeopleIcon.src} />
+                </div>
+                <div className="ml-3 w-52">
+                  <p className="leading-4 font-semibold">
+                    There were a segmentation fault caused by your last commit
+                  </p>
+                  <p className="leading-4">
+                    Please fix this disaster, we're counting on you to get the
+                    new...
+                  </p>
+                </div>
+              </li>
 
-            {/* Email 6 */}
-            <div className="w-60 mt-2 flex items-center">
-              <div className="">
-                <img className="pixelated" src={PeopleIcon.src} />
-              </div>
-              <div className="ml-1 w-52">
-                <p className="leading-3 font-semibold">
-                  ¿Te acuerdas de mi? Ya ha pasado mucho tiempo
-                </p>
-                <p className="leading-3">
-                  No se cómo he podido extrañarte tanto, así que te envío
-                  este...
-                </p>
-              </div>
-            </div>
+              {/* Email 6 */}
+              <li className="w-60 mt-2 flex items-center">
+                <div className="">
+                  <img className="pixelated" src={PeopleIcon.src} />
+                </div>
+                <div className="ml-3 w-52">
+                  <p className="leading-4 font-semibold">
+                    ¿Te acuerdas de mi? Ya ha pasado mucho tiempo
+                  </p>
+                  <p className="leading-4">
+                    No se cómo he podido extrañarte tanto, así que te envío
+                    este...
+                  </p>
+                </div>
+              </li>
 
-            <div className="w-60 mt-2 flex items-center">
-              <div className="">
-                <img className="pixelated" src={PeopleIcon.src} />
-              </div>
-              <div className="ml-1 w-52">
-                <p className="leading-3 font-semibold">
-                  Reenvía este email a 256 personas diferentes o ya verás
-                </p>
-                <p className="leading-3">
-                  Haz caído en la maldición del príncipe nigeriano, ahora
-                  debes...
-                </p>
-              </div>
-            </div>
+              {/* Email 7 */}
+              <li className="w-60 mt-2 flex items-center">
+                <div className="">
+                  <img className="pixelated" src={PeopleIcon.src} />
+                </div>
+                <div className="ml-3 w-52">
+                  <p className="leading-4 font-semibold">
+                    Reenvía este email a 256 personas diferentes o ya verás
+                  </p>
+                  <p className="leading-4">
+                    Haz caído en la maldición del príncipe nigeriano, ahora
+                    debes...
+                  </p>
+                </div>
+              </li>
+            </ul>
           </div>
 
           <div className="w-[380px] ml-2 border-blue-400 border-4">
