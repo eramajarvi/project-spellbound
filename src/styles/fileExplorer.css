@@ -1,0 +1,51 @@
+div.fileExplorer h1 {
+  border-bottom: 1px solid #c0c0c0;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  white-space: nowrap;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 700;
+  font-size: xx-large;
+}
+
+div.fileExplorer {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.3em;
+}
+
+div.fileExplorer table {
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th.fileExplorer {
+  cursor: pointer;
+}
+
+td.detailsColumn {
+  padding-inline-start: 2em;
+  text-align: end;
+  white-space: nowrap;
+}
+
+a.fileLink {
+  text-decoration: none;
+  user-select: auto;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+a.fileLink:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a > img {
+  padding-right: 0.5em;
+}
+
+a > p {
+  color: rgb(0, 0, 238);
+}
