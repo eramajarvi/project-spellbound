@@ -26,6 +26,11 @@ a {
   cursor: url("/assets/cursor-pointer.ico"), pointer !important;
 }
 
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
 .title-bar {
   height: 28px;
   font-size: 14px;
@@ -45,6 +50,38 @@ a {
 
 .window {
   font-size: 1.1em;
+}
+
+ul.tree-view {
+  font-family: "Tahoma", system-ui, sans-serif;
+  font-size: 1em;
+  background: #ffffff00;
+}
+
+ul.tree-view ul {
+  margin-top: 3px;
+  margin-left: 16px;
+  padding-left: 16px;
+  border-left: 2px dotted grey;
+}
+
+ul.tree-view details > summary:before {
+  text-align: center;
+  font-size: 10px;
+  display: block;
+  float: left;
+  content: "➕";
+  border: 2px solid grey;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  margin-right: 5px;
+  padding-left: 2px;
+  background-color: #fffffffa;
+}
+
+.fieldset-fix .field-row label {
+  cursor: url("/assets/cursor-pointer.ico"), pointer !important;
 }
 
 /* Gradient background - based on https://codepen.io/coreh/pen/LQJBLa?editors=1100 */
