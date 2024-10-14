@@ -26,6 +26,23 @@ a {
   cursor: url("/assets/cursor-pointer.ico"), pointer !important;
 }
 
+.title-bar {
+  height: 28px;
+  font-size: 14px;
+}
+
+.title-bar-controls button {
+  min-width: 21px;
+  min-height: 22px;
+  margin-left: 2px;
+  background-position: 50%;
+  image-rendering: auto;
+}
+
+.window {
+  font-size: 1.1em;
+}
+
 /* Gradient background - based on https://codepen.io/coreh/pen/LQJBLa?editors=1100 */
 .crt::before {
   content: "";
@@ -39,10 +56,10 @@ a {
   background: radial-gradient(
     circle at center,
     transparent,
-    rgba(47, 46, 46, 0.5)
+    rgba(47, 46, 46, 0.3)
   );
   z-index: 3;
-  background-size: 3px 3px;
+  background-size: 4px 4px;
   pointer-events: none;
 }
 
@@ -57,7 +74,7 @@ a {
   background: rgba(18, 16, 16, 0.1);
   z-index: 2;
   pointer-events: none;
-  animation: flicker 0.15s infinite;
+  animation: flicker 0.1s infinite;
 }
 
 @keyframes flicker {
