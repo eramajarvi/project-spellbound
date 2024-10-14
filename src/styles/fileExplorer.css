@@ -33,8 +33,6 @@ td.detailsColumn {
 a.fileLink {
   text-decoration: none;
   user-select: auto;
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
 }
 
 a.fileLink:hover {

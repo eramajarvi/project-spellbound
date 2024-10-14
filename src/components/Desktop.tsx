@@ -1,7 +1,3 @@
-import "xp.css/dist/XP.css";
-
-import BlissWallpaper from "../assets/Bliss.jpg";
-
 import React, { useState } from "react";
 import DefaultWindow from "./DefaultWindow";
 
