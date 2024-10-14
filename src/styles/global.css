@@ -39,6 +39,10 @@ a {
   image-rendering: auto;
 }
 
+.title-bar-text > p {
+  margin-left: 0.4em;
+}
+
 .window {
   font-size: 1.1em;
 }
