@@ -89,7 +89,14 @@ export default function FileExplorer() {
 
       <div>{isDesktopVisible ? <Desktop /> : null}</div>
 
-      <div>{isSoporVisible ? <SoporPicture /> : null}</div>
+      <div>
+        {isSoporVisible ? (
+          <SoporPicture
+            soporVisibility={soporVisibility}
+            desktopVisibility={desktopVisibility}
+          />
+        ) : null}
+      </div>
     </>
   );
 }
