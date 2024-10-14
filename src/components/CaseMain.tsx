@@ -35,7 +35,7 @@ function CaseMain({
           <table className="fileExplorer">
             <thead>
               <tr>
-                <th className="fileExplorer">Nombre</th>
+                <th className="detailsColumn">Nombre</th>
                 <th className="detailsColumn">Tamaño</th>
                 <th className="detailsColumn">Fecha de modificación</th>
               </tr>
