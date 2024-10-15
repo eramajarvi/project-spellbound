@@ -26,7 +26,7 @@ function OutlookWindow({ OutlookAnswerWindowVisibility }) {
     <Draggable
       handle="#outlook-window-title-bar"
       nodeRef={nodeRef}
-      positionOffset={{ x: "0%", y: "20%" }}
+      positionOffset={{ x: "40%", y: "3%" }}
     >
       <div
         ref={nodeRef}
@@ -208,27 +208,30 @@ function OutlookWindow({ OutlookAnswerWindowVisibility }) {
             </ul>
           </div>
 
-          <div className="w-[380px] ml-2">
-            <div className="h-8 flex items-center border-2 border-gray-400 rounded-md mb-2">
-              <div className="flex items-center mx-2 hover:bg-[#3d64bd] hover:text-white hover:px-2 hover:font-bold actionable">
-                <img src={AnswerIcon} className="size-6" />
+          <div className="w-[400px] ml-2">
+            <div className="h-10 flex items-center justify-center border-2 border-gray-400 rounded-md mb-2">
+              <button
+                className="flex items-center mx-0.5"
+                onClick={() => setOutlookAnswerVisible(true)}
+              >
+                <img src={AnswerIcon} className="size-6 -ml-2" />
                 <p>Responder</p>
-              </div>
+              </button>
 
-              <div className="flex items-center mx-2 hover:bg-slate-400 hover:px-2 cursor-not-allowed inactive-text">
-                <img src={DeleteIcon} className="size-6 grayscale" />
+              <button className="flex items-center mx-1 inactive-text">
+                <img src={DeleteIcon} className="size-6 -ml-2 grayscale" />
                 <p>Eliminar</p>
-              </div>
+              </button>
 
-              <div className="flex items-center mx-2 hover:bg-slate-400 hover:px-2 cursor-not-allowed inactive-text">
-                <img src={AnswerIcon} className="size-6 grayscale" />
+              <button className="flex items-center mx-1 inactive-text">
+                <img src={AnswerIcon} className="size-6 -ml-2 grayscale" />
                 <p>Archivar</p>
-              </div>
+              </button>
 
-              <div className="flex items-center mx-2 hover:bg-slate-400 hover:px-2 cursor-not-allowed inactive-text">
-                <img src={PrintIcon} className="size-6 grayscale" />
+              <button className="flex items-center mx-1 inactive-text">
+                <img src={PrintIcon} className="size-6 -ml-2 grayscale" />
                 <p>Imprimir</p>
-              </div>
+              </button>
             </div>
 
             <Email01 />

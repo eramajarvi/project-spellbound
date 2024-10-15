@@ -16,28 +16,35 @@ import DeleteIcon from "../assets/delete.ico";
 
 import Email01 from "./emails/Email-01";
 
-function OutlookAnswerWindow() {
+function OutlookAnswerWindow({ OutlookAnswerWindowVisibility }) {
   const nodeRef = React.useRef(null);
+
+  const { isOutlookAnswerVisible, setOutlookAnswerVisible } =
+    OutlookAnswerWindowVisibility;
 
   return (
     <Draggable
       handle="#outlook-window-title-bar"
       nodeRef={nodeRef}
-      positionOffset={{ x: "0%", y: "20%" }}
+      positionOffset={{ x: "30%", y: "-95%" }}
     >
       <div
         ref={nodeRef}
-        className="window"
+        className="window absolute"
         style={{ width: "850px", height: "700px" }}
       >
         <div className="title-bar" id="outlook-window-title-bar">
           <div className="title-bar-text flex items-center">
             <img src={OutlookIcon.src} />
-            <p>Outlook Express</p>
+            <p>Outlook Express - Mensaje Nuevo</p>
           </div>
           <div className="title-bar-controls">
             <button aria-label="Help" />
-            <button aria-label="Close" />
+
+            <button
+              aria-label="Close"
+              onClick={() => setOutlookAnswerVisible(false)}
+            />
           </div>
         </div>
 
