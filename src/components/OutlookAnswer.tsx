@@ -14,6 +14,21 @@ function OutlookAnswerWindow({ OutlookAnswerWindowVisibility }) {
   const { isOutlookAnswerVisible, setOutlookAnswerVisible } =
     OutlookAnswerWindowVisibility;
 
+  const fileInputRef = React.useRef(null);
+
+  const handleAttachButtonClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = (event) => {
+    const files = event.target.files;
+
+    if (files.length > 0) {
+      console.log("Selected files:", files);
+      // Revisar que hacer despues con el archivo seleccionado
+    }
+  };
+
   return (
     <Draggable
       handle="#outlook-window-title-bar"
@@ -60,9 +75,21 @@ function OutlookAnswerWindow({ OutlookAnswerWindowVisibility }) {
           {/* Tools bar */}
           <div className="m-2">
             <button className="mr-1">
-              <div className="inline-flex flex-col items-center p-1">
+              <div
+                className="inline-flex flex-col items-center p-1"
+                onClick={handleAttachButtonClick}
+              >
                 <img src={AttachIcon.src} className="w-6" />
                 <p>Adjuntar</p>
+
+                {/* Hidden input for file picking */}
+                <input
+                  type="file"
+                  accept=".jpg,.jpeg,.png,.webp"
+                  ref={fileInputRef}
+                  style={{ display: "none" }}
+                  onChange={handleFileChange}
+                />
               </div>
             </button>
 
