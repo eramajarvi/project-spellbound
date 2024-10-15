@@ -19,7 +19,11 @@ export default function Desktop() {
         OutlookAnswerWindowVisibility={OutlookAnswerWindowVisibility}
       />
 
-      {isOutlookAnswerVisible ? <OutlookAnswerWindow /> : null}
+      {isOutlookAnswerVisible ? (
+        <OutlookAnswerWindow
+          OutlookAnswerWindowVisibility={OutlookAnswerWindowVisibility}
+        />
+      ) : null}
     </>
   );
 }
