@@ -22,8 +22,14 @@ html {
 }
 
 button,
-a {
+a,
+.actionable {
   cursor: url("/assets/cursor-pointer.ico"), pointer !important;
+}
+
+.inactive-text {
+  text-shadow: 0.5px 1px 0px rgb(255, 255, 255);
+  color: gray;
 }
 
 .pixelated {
