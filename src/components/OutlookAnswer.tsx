@@ -2,19 +2,11 @@ import React, { useState } from "react";
 import Draggable from "react-draggable";
 
 import OutlookIcon from "../assets/outlook.png";
-import LocalFoldersIcon from "../assets/localfolders.png";
-import InboxIcon from "../assets/inbox.png";
-import ContactsIcon from "../assets/contacts.png";
-import DraftsIcon from "../assets/drafts.png";
-import OutboxIcon from "../assets/outbox.png";
-import DeletedIcon from "../assets/deleted.png";
-import SentIcon from "../assets/sent.png";
-import PeopleIcon from "../assets/useremail.png";
-import AnswerIcon from "../assets/answer.ico";
-import PrintIcon from "../assets/print.ico";
-import DeleteIcon from "../assets/delete.ico";
-
-import Email01 from "./emails/Email-01";
+import AttachIcon from "../assets/attach.png";
+import CutIcon from "../assets/cut.png";
+import CopyIcon from "../assets/copy.png";
+import PasteIcon from "../assets/paste.png";
+import RoverWaiting from "../assets/rover-waiting.mp4";
 
 function OutlookAnswerWindow({ OutlookAnswerWindowVisibility }) {
   const nodeRef = React.useRef(null);
@@ -48,7 +40,67 @@ function OutlookAnswerWindow({ OutlookAnswerWindowVisibility }) {
           </div>
         </div>
 
-        <div className="window-body flex justify-normal"></div>
+        <div className="window-body">
+          {/* Email header */}
+          <div className="m-2">
+            <div className="flex items-center my-1">
+              <p className="w-16">Para:</p>
+              <input className="w-[750px]" type="text" />
+            </div>
+            <div className="flex items-center my-1">
+              <p className="w-16">CC:</p>
+              <input className="w-[750px]" type="text" />
+            </div>
+            <div className="flex items-center my-1">
+              <p className="w-16">Asunto:</p>
+              <input className="w-[750px]" type="text" />
+            </div>
+          </div>
+
+          {/* Tools bar */}
+          <div className="m-2">
+            <button className="mr-1">
+              <div className="inline-flex flex-col items-center p-1">
+                <img src={AttachIcon.src} className="w-6" />
+                <p>Adjuntar</p>
+              </div>
+            </button>
+
+            <button className="mx-1 inactive-text">
+              <div className="inline-flex flex-col items-center p-1">
+                <img src={CutIcon.src} className="w-6 grayscale" />
+                <p>Cortar</p>
+              </div>
+            </button>
+
+            <button className="mx-1 inactive-text">
+              <div className="inline-flex flex-col items-center p-1">
+                <img src={CopyIcon.src} className="w-6 grayscale" />
+                <p>Copiar</p>
+              </div>
+            </button>
+
+            <button className="mx-1 inactive-text">
+              <div className="inline-flex flex-col items-center p-1">
+                <img src={PasteIcon.src} className="w-6 grayscale" />
+                <p>Pegar</p>
+              </div>
+            </button>
+          </div>
+
+          {/* Email body */}
+          <div className="m-2">
+            <textarea className="w-[815px] h-[350px]"></textarea>
+          </div>
+        </div>
+
+        <div>
+          <p>Status bar</p>
+          <video autoPlay loop muted playsInline width="128" height="128">
+            <source src={RoverWaiting} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
     </Draggable>
   );

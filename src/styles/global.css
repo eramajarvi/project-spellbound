@@ -27,6 +27,11 @@ a,
   cursor: url("/assets/cursor-pointer.ico"), pointer !important;
 }
 
+button {
+  font-size: 1em;
+  font-family: "Tahoma";
+}
+
 .inactive-text {
   text-shadow: 0.5px 1px 0px rgb(255, 255, 255);
   color: gray;
