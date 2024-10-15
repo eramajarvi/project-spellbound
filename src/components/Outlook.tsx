@@ -89,7 +89,7 @@ function OutlookWindow() {
           </div>
 
           {/* Contenedor de emails */}
-          <div className="w-60 ml-2">
+          <div className="w-64 ml-2 overflow-y-auto">
             <ul className="tree-view">
               {/* Email 1 */}
               <li className="w-60 flex items-center">

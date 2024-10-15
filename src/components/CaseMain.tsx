@@ -52,7 +52,7 @@ function CaseMain({
                     }}
                   >
                     <img src={imageIcon.src} alt="Icon of generic image" />
-                    <p>ábreme.jpg</p>
+                    <p>ábreme - OPEN ME - click me.jpg</p>
                   </a>
                 </td>
                 <td className="detailsColumn">500 kB</td>
