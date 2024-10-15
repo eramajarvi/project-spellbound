@@ -4,7 +4,7 @@ import Horro01 from "../../assets/horror-01.webp";
 export default function Email01() {
   return (
     <>
-      <div className="overflow-y-auto h-[620px] p-1 bg-white">
+      <div className="overflow-y-auto h-[610px] p-1 bg-white">
         <div className="flex items-center bg-slate-100">
           <div className="w-32">
             <img src={FBISeal.src} className="size-fit" />
@@ -23,8 +23,8 @@ export default function Email01() {
         <div className="p-1">
           <p className="text-sm">
             <p className="font-extrabold">
-              Haga click en Responder a este email y enviénos una foto suya para
-              asegurarnos que está bien.
+              Haga click en Responder a este email y{" "}
+              <u>enviénos una foto suya</u> para asegurarnos que está bien.
               <br />
               Por favor cierre todas las puertas y ventanas de su casa y no le
               abra a nadie.
