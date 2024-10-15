@@ -209,7 +209,7 @@ function OutlookWindow({ OutlookAnswerWindowVisibility }) {
           </div>
 
           <div className="w-[400px] ml-2">
-            <div className="h-10 flex items-center justify-center border-2 border-gray-400 rounded-md mb-2">
+            <div className="h-10 flex items-center justify-center  mb-2">
               <button
                 className="flex items-center mx-0.5"
                 onClick={() => setOutlookAnswerVisible(true)}
