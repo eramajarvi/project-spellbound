@@ -10,11 +10,17 @@ import OutboxIcon from "../assets/outbox.png";
 import DeletedIcon from "../assets/deleted.png";
 import SentIcon from "../assets/sent.png";
 import PeopleIcon from "../assets/useremail.png";
+import AnswerIcon from "../assets/answer.ico";
+import PrintIcon from "../assets/print.ico";
+import DeleteIcon from "../assets/delete.ico";
 
 import Email01 from "./emails/Email-01";
 
-function OutlookWindow() {
+function OutlookWindow({ OutlookAnswerWindowVisibility }) {
   const nodeRef = React.useRef(null);
+
+  const { isOutlookAnswerVisible, setOutlookAnswerVisible } =
+    OutlookAnswerWindowVisibility;
 
   return (
     <Draggable
@@ -44,11 +50,11 @@ function OutlookWindow() {
               <li>
                 <div className="flex items-center">
                   <img className="pixelated" src={LocalFoldersIcon.src} />
-                  <p className="font-bold ml-2">Carpetas locales</p>
+                  <p className="font-extrabold ml-2">Carpetas locales</p>
                 </div>
                 <ul>
                   <li>
-                    <a className="flex items-center" href="">
+                    <a className="flex items-center font-bold" href="">
                       <img className="pixelated" src={InboxIcon.src} />
                       <p>Bandeja de entrada</p>
                     </a>
@@ -92,13 +98,13 @@ function OutlookWindow() {
           <div className="w-64 ml-2 overflow-y-auto">
             <ul className="tree-view">
               {/* Email 1 */}
-              <li className="w-60 flex items-center">
+              <li className="w-60 flex items-center bg-[#3d64bd] text-white p-1.5">
                 <div className="w-8">
                   <img className="pixelated" src={PeopleIcon.src} />
                 </div>
                 <div className="ml-3">
                   <p className="leading-4 font-semibold">
-                    [URGENTE] Avistamientos detectados cerca de tu área
+                    [URGENTE] Avistamientos detectados cerca de su área
                   </p>
                   <p className="leading-4">
                     Usted se encuentra en peligro, por favor revise este email
@@ -108,7 +114,7 @@ function OutlookWindow() {
               </li>
 
               {/* Email 2 */}
-              <li className="w-60 mt-2 flex items-center">
+              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5">
                 <div className="">
                   <img className="pixelated" src={PeopleIcon.src} />
                 </div>
@@ -123,7 +129,7 @@ function OutlookWindow() {
               </li>
 
               {/* Email 3 */}
-              <li className="w-60 mt-2 flex items-center">
+              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5">
                 <div className="">
                   <img className="pixelated" src={PeopleIcon.src} />
                 </div>
@@ -138,7 +144,7 @@ function OutlookWindow() {
               </li>
 
               {/* Email 4 */}
-              <li className="w-60 mt-2 flex items-center">
+              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5">
                 <div className="">
                   <img className="pixelated" src={PeopleIcon.src} />
                 </div>
@@ -153,7 +159,7 @@ function OutlookWindow() {
               </li>
 
               {/* Email 5 */}
-              <li className="w-60 mt-2 flex items-center">
+              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5">
                 <div className="">
                   <img className="pixelated" src={PeopleIcon.src} />
                 </div>
@@ -169,7 +175,7 @@ function OutlookWindow() {
               </li>
 
               {/* Email 6 */}
-              <li className="w-60 mt-2 flex items-center">
+              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5">
                 <div className="">
                   <img className="pixelated" src={PeopleIcon.src} />
                 </div>
@@ -185,7 +191,7 @@ function OutlookWindow() {
               </li>
 
               {/* Email 7 */}
-              <li className="w-60 mt-2 flex items-center">
+              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5">
                 <div className="">
                   <img className="pixelated" src={PeopleIcon.src} />
                 </div>
@@ -202,7 +208,29 @@ function OutlookWindow() {
             </ul>
           </div>
 
-          <div className="w-[380px] ml-2 ">
+          <div className="w-[380px] ml-2">
+            <div className="h-8 flex items-center border-2 border-gray-400 rounded-md mb-2">
+              <div className="flex items-center mx-2 hover:bg-[#3d64bd] hover:text-white hover:px-2 hover:font-bold actionable">
+                <img src={AnswerIcon} className="size-6" />
+                <p>Responder</p>
+              </div>
+
+              <div className="flex items-center mx-2 hover:bg-slate-400 hover:px-2 cursor-not-allowed inactive-text">
+                <img src={DeleteIcon} className="size-6 grayscale" />
+                <p>Eliminar</p>
+              </div>
+
+              <div className="flex items-center mx-2 hover:bg-slate-400 hover:px-2 cursor-not-allowed inactive-text">
+                <img src={AnswerIcon} className="size-6 grayscale" />
+                <p>Archivar</p>
+              </div>
+
+              <div className="flex items-center mx-2 hover:bg-slate-400 hover:px-2 cursor-not-allowed inactive-text">
+                <img src={PrintIcon} className="size-6 grayscale" />
+                <p>Imprimir</p>
+              </div>
+            </div>
+
             <Email01 />
           </div>
         </div>
