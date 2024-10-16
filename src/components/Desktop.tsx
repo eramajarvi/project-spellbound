@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import OutlookWindow from "./Outlook";
 import OutlookAnswerWindow from "./OutlookAnswer";
+import RoverWindow from "./RoverWindow";
 
 export default function Desktop() {
   const [isOutlookAnswerVisible, setOutlookAnswerVisible] =
@@ -10,6 +11,10 @@ export default function Desktop() {
     isOutlookAnswerVisible,
     setOutlookAnswerVisible,
   };
+
+  const [isRoverWindowVisible, setRoverWindowVisible] = React.useState(false);
+
+  const RoverWindowVisibility = { isRoverWindowVisible, setRoverWindowVisible };
 
   return (
     <>
@@ -22,8 +27,11 @@ export default function Desktop() {
       {isOutlookAnswerVisible ? (
         <OutlookAnswerWindow
           OutlookAnswerWindowVisibility={OutlookAnswerWindowVisibility}
+          RoverWindowVisibility={RoverWindowVisibility}
         />
       ) : null}
+
+      {isRoverWindowVisible ? <RoverWindow /> : null}
     </>
   );
 }

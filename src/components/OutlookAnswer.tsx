@@ -1,7 +1,4 @@
 import React from "react";
-import type { APIRoute } from "astro";
-import { Cloudinary, Transformation } from "@cloudinary/url-gen";
-import { name } from "@cloudinary/url-gen/actions/namedTransformation";
 
 import Draggable from "react-draggable";
 
@@ -10,13 +7,17 @@ import AttachIcon from "../assets/attach.png";
 import CutIcon from "../assets/cut.png";
 import CopyIcon from "../assets/copy.png";
 import PasteIcon from "../assets/paste.png";
-import RoverWaiting from "../assets/rover-waiting.mp4";
 
-function OutlookAnswerWindow({ OutlookAnswerWindowVisibility }) {
+function OutlookAnswerWindow({
+  OutlookAnswerWindowVisibility,
+  RoverWindowVisibility,
+}) {
   const nodeRef = React.useRef(null);
 
   const { isOutlookAnswerVisible, setOutlookAnswerVisible } =
     OutlookAnswerWindowVisibility;
+
+  const { isRoverWindowVisible, setRoverWindowVisible } = RoverWindowVisibility;
 
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const [imageFile, setImageFile] = React.useState<File | null>(null);
@@ -39,6 +40,8 @@ function OutlookAnswerWindow({ OutlookAnswerWindowVisibility }) {
     console.log(paramsToSign);
 
     if (event.target.files && event.target.files[0]) {
+      setRoverWindowVisible(true);
+
       const file = event.target.files[0];
 
       console.log("Selected files:", file);
@@ -126,18 +129,6 @@ function OutlookAnswerWindow({ OutlookAnswerWindowVisibility }) {
         console.error("Error during upload", xhr.statusText);
       }
     };
-
-    // const response = await fetch(url, {
-    //   method: "POST",
-    //   body: formData,
-    // });
-
-    // if (response.ok) {
-    //   const result = await response.json();
-    //   console.log("Upload result:", result.url);
-    // } else {
-    //   console.error("Upload failed");
-    // }
   }
 
   return (
@@ -234,11 +225,6 @@ function OutlookAnswerWindow({ OutlookAnswerWindowVisibility }) {
 
         <div>
           <p>Status bar</p>
-
-          <video autoPlay loop muted playsInline width="128" height="128">
-            <source src={RoverWaiting} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
         </div>
       </div>
     </Draggable>
