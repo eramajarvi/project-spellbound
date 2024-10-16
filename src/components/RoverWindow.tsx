@@ -30,7 +30,7 @@ function RoverWindow({}) {
               Your browser does not support the video tag.
             </video>
             <div>
-              <p className="text-white"> Hola mundo...</p>
+              <p className="text-white"> ¿Estás seguro que estás bien?</p>
             </div>
           </div>
         </div>

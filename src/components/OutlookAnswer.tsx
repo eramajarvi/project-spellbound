@@ -22,6 +22,8 @@ function OutlookAnswerWindow({
 
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const [imageFile, setImageFile] = React.useState<File | null>(null);
+  const [fileIsPicked, setFileIsPicked] = React.useState(false);
+  const [imageURL, setImageURL] = React.useState(null);
 
   const [progress, setProgress] = React.useState(0);
 
@@ -43,7 +45,9 @@ function OutlookAnswerWindow({
     console.log(paramsToSign);
 
     if (event.target.files && event.target.files[0]) {
+      setFileIsPicked(true);
       setRoverWindowVisible(true);
+      setImageURL(URL.createObjectURL(event.target.files[0]));
 
       const file = event.target.files[0];
 
@@ -241,7 +245,12 @@ function OutlookAnswerWindow({
             <div className="p-4 text-base">
               Hola, <br />
               Les adjunto una foto mía para demostrar que estoy bien:
-              <br />
+              {fileIsPicked ? (
+                <div>
+                  <br />
+                  <img src={imageURL} alt="Selected file" className="w-96" />
+                </div>
+              ) : null}
             </div>
             <div className="p-4">
               <div className="text-sm">
