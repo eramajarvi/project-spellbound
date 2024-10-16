@@ -7,6 +7,7 @@ import AttachIcon from "../assets/attach.png";
 import CutIcon from "../assets/cut.png";
 import CopyIcon from "../assets/copy.png";
 import PasteIcon from "../assets/paste.png";
+import Horro01 from "../assets/horror-01.webp";
 
 function OutlookAnswerWindow({
   OutlookAnswerWindowVisibility,
@@ -23,6 +24,8 @@ function OutlookAnswerWindow({
   const [imageFile, setImageFile] = React.useState<File | null>(null);
 
   const [progress, setProgress] = React.useState(0);
+
+  const currentDate = new Date().toLocaleString();
 
   const handleAttachButtonClick = () => {
     fileInputRef.current.click();
@@ -162,15 +165,30 @@ function OutlookAnswerWindow({
           <div className="m-2">
             <div className="flex items-center my-1">
               <p className="w-16">Para:</p>
-              <input className="w-[750px]" type="text" />
+              <input
+                className="w-[750px] text-sm"
+                type="text"
+                placeholder="notifications@fbi.gov"
+                disabled
+              />
             </div>
             <div className="flex items-center my-1">
               <p className="w-16">CC:</p>
-              <input className="w-[750px]" type="text" />
+              <input
+                className="w-[750px] text-sm"
+                type="text"
+                placeholder="p2224j@shallowbay.dev"
+                disabled
+              />
             </div>
             <div className="flex items-center my-1">
               <p className="w-16">Asunto:</p>
-              <input className="w-[750px]" type="text" />
+              <input
+                className="w-[750px] text-sm"
+                type="text"
+                value="Te envío mi foto porque aquí todo está muy bien"
+                onChange={() => {}}
+              />
             </div>
           </div>
 
@@ -218,13 +236,60 @@ function OutlookAnswerWindow({
           </div>
 
           {/* Email body */}
-          <div className="m-2">
-            <textarea className="w-[815px] h-[350px]"></textarea>
+          <div className="m-2 bg-white overflow-y-auto h-[480px] p-1">
+            {/* Original email */}
+            <div className="p-4 text-base">
+              Hola, <br />
+              Les adjunto una foto mía para demostrar que estoy bien:
+              <br />
+            </div>
+            <div className="p-4">
+              <div className="text-sm">
+                <hr className="border-1 border-black" />
+                <br />
+                <p>De: notifications@fbi.gov</p>
+                <p>Enviado: {currentDate}</p>
+                <p>Para: Usted</p>
+                <p>
+                  Asunto: [URGENTE] Avistamientos detectados cerca de su área
+                </p>
+                <br />
+                <p className="font-extrabold">
+                  Haga click en Responder a este email y{" "}
+                  <u>enviénos una foto suya</u> para asegurarnos que está bien.
+                  <br />
+                  Por favor cierre todas las puertas y ventanas de su casa y no
+                  le abra a nadie.
+                </p>
+                <img src={Horro01.src} className="size-64 mb-2 mt-2" />
+                Recientemente nuestros equipos de mediciones detectaron niveles
+                anormales de avistamientos de{" "}
+                <p className="font-semibold inline-block">
+                  conceptos ininteligibles
+                </p>{" "}
+                cerca de su área.
+                <br />
+                <br />
+                Sólo son detectables al utilizar cualquier dispositivo que sea
+                capaz de capturar fotones.
+                <br />
+                <br />
+                Estas entidades más allá de la comprensión humana tienen la
+                capacidad de aparecer en fotografías tomadas en cámaras comunes.
+                Es díficil saber cuándo aparecerán.
+                <br />
+                <br />
+                Espere más instrucciones de nuestra parte una vez nos aseguremos
+                que está bien.
+              </div>
+            </div>
           </div>
         </div>
 
-        <div>
-          <p>Status bar</p>
+        <div className="status-bar">
+          <p className="status-bar-field">Press F1 for help</p>
+          <p className="status-bar-field">Slide 1</p>
+          <p className="status-bar-field">CPU Usage: 14%</p>
         </div>
       </div>
     </Draggable>
