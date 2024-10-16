@@ -12,6 +12,7 @@ import Horro01 from "../assets/horror-01.webp";
 function OutlookAnswerWindow({
   OutlookAnswerWindowVisibility,
   RoverWindowVisibility,
+  warningWindowVisibility,
 }) {
   const nodeRef = React.useRef(null);
 
@@ -19,6 +20,9 @@ function OutlookAnswerWindow({
     OutlookAnswerWindowVisibility;
 
   const { isRoverWindowVisible, setRoverWindowVisible } = RoverWindowVisibility;
+
+  const { isWarningWindowVisible, setWarningWindowVisible } =
+    warningWindowVisibility;
 
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const [imageFile, setImageFile] = React.useState<File | null>(null);
@@ -159,7 +163,7 @@ function OutlookAnswerWindow({
 
             <button
               aria-label="Close"
-              onClick={() => setOutlookAnswerVisible(false)}
+              onClick={() => setWarningWindowVisible(true)}
             />
           </div>
         </div>

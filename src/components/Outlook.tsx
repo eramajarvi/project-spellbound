@@ -16,11 +16,17 @@ import DeleteIcon from "../assets/delete.ico";
 
 import Email01 from "./emails/Email-01";
 
-function OutlookWindow({ OutlookAnswerWindowVisibility }) {
+function OutlookWindow({
+  OutlookAnswerWindowVisibility,
+  warningWindowVisibility,
+}) {
   const nodeRef = React.useRef(null);
 
   const { isOutlookAnswerVisible, setOutlookAnswerVisible } =
     OutlookAnswerWindowVisibility;
+
+  const { isWarningWindowVisible, setWarningWindowVisible } =
+    warningWindowVisibility;
 
   return (
     <Draggable
@@ -40,7 +46,10 @@ function OutlookWindow({ OutlookAnswerWindowVisibility }) {
           </div>
           <div className="title-bar-controls">
             <button aria-label="Help" />
-            <button aria-label="Close" />
+            <button
+              aria-label="Close"
+              onClick={() => setWarningWindowVisible(true)}
+            />
           </div>
         </div>
 
