@@ -1,6 +1,6 @@
 import React from "react";
 import type { APIRoute } from "astro";
-import { Cloudinary } from "@cloudinary/url-gen";
+import { Cloudinary, Transformation } from "@cloudinary/url-gen";
 import { name } from "@cloudinary/url-gen/actions/namedTransformation";
 
 import Draggable from "react-draggable";
@@ -21,6 +21,8 @@ function OutlookAnswerWindow({ OutlookAnswerWindowVisibility }) {
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const [imageFile, setImageFile] = React.useState<File | null>(null);
 
+  const [progress, setProgress] = React.useState(0);
+
   const handleAttachButtonClick = () => {
     fileInputRef.current.click();
   };
@@ -29,7 +31,7 @@ function OutlookAnswerWindow({ OutlookAnswerWindowVisibility }) {
     const paramsToSign = {
       // Parameters that need to be signed
       timestamp: Math.round(new Date().getTime() / 1000),
-      eager: "c_pad,h_300,w_400|c_crop,h_200,w_260",
+      eager: "t_panic-01",
       public_id: crypto.randomUUID(),
       folder: "project-spellbound",
     };
@@ -92,20 +94,50 @@ function OutlookAnswerWindow({ OutlookAnswerWindowVisibility }) {
     formData.append("timestamp", params.timestamp);
     formData.append("public_id", params.public_id);
     formData.append("signature", signature);
-    formData.append("eager", "c_pad,h_300,w_400|c_crop,h_200,w_260");
+    formData.append("eager", "t_panic-01");
     formData.append("folder", "project-spellbound");
 
-    const response = await fetch(url, {
-      method: "POST",
-      body: formData,
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+
+    // Update progress (can be used to show progress indicator)
+    xhr.upload.addEventListener("progress", (e) => {
+      setProgress(Math.round((e.loaded * 100.0) / e.total));
+      console.log(Math.round((e.loaded * 100.0) / e.total));
     });
 
-    if (response.ok) {
-      const result = await response.json();
-      console.log("Upload result:", result.url);
-    } else {
-      console.error("Upload failed");
-    }
+    xhr.onreadystatechange = (e) => {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        const response = JSON.parse(xhr.responseText);
+
+        setImageFile(response.secure_url);
+        console.log(response.secure_url);
+      }
+    };
+
+    xhr.send(formData);
+
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        // Success
+        console.log("Upload complete!", xhr.responseText);
+      } else {
+        console.error("Error during upload", xhr.statusText);
+      }
+    };
+
+    // const response = await fetch(url, {
+    //   method: "POST",
+    //   body: formData,
+    // });
+
+    // if (response.ok) {
+    //   const result = await response.json();
+    //   console.log("Upload result:", result.url);
+    // } else {
+    //   console.error("Upload failed");
+    // }
   }
 
   return (
