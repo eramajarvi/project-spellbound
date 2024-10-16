@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
+import type { APIRoute } from "astro";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { name } from "@cloudinary/url-gen/actions/namedTransformation";
+
 import Draggable from "react-draggable";
 
 import OutlookIcon from "../assets/outlook.png";
@@ -14,20 +18,95 @@ function OutlookAnswerWindow({ OutlookAnswerWindowVisibility }) {
   const { isOutlookAnswerVisible, setOutlookAnswerVisible } =
     OutlookAnswerWindowVisibility;
 
-  const fileInputRef = React.useRef(null);
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
+  const [imageFile, setImageFile] = React.useState<File | null>(null);
 
   const handleAttachButtonClick = () => {
     fileInputRef.current.click();
   };
 
-  const handleFileChange = (event) => {
-    const files = event.target.files;
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const paramsToSign = {
+      // Parameters that need to be signed
+      timestamp: Math.round(new Date().getTime() / 1000),
+      eager: "c_pad,h_300,w_400|c_crop,h_200,w_260",
+      public_id: crypto.randomUUID(),
+      folder: "project-spellbound",
+    };
 
-    if (files.length > 0) {
-      console.log("Selected files:", files);
-      // Revisar que hacer despues con el archivo seleccionado
+    console.log(paramsToSign);
+
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+
+      console.log("Selected files:", file);
+      setImageFile(file);
+
+      // Revisar que hacer despues con el archivo seleccionado:
+
+      getCloudinarySignature(paramsToSign)
+        .then((signature) => {
+          console.log("Signature:", signature);
+          // Use the signature to upload your media to Cloudinary
+
+          uploadToCloudinary(file, signature, paramsToSign);
+        })
+        .catch((error) => {
+          console.error("Error fetching signature:", error);
+        });
     }
   };
+
+  async function getCloudinarySignature(paramsToSign) {
+    const response = await fetch("/api/upload-cloudinary", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ paramsToSign }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data.signature; // This will contain the Cloudinary signature
+    } else {
+      throw new Error("Error signing request");
+    }
+  }
+
+  async function uploadToCloudinary(file, signature, params) {
+    const formData = new FormData();
+
+    const url =
+      "https://api.cloudinary.com/v1_1/" +
+      String(import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME) +
+      "/auto/upload";
+
+    console.log(url);
+
+    formData.append("file", file);
+    formData.append(
+      "api_key",
+      String(import.meta.env.PUBLIC_CLOUDINARY_API_KEY)
+    );
+    formData.append("timestamp", params.timestamp);
+    formData.append("public_id", params.public_id);
+    formData.append("signature", signature);
+    formData.append("eager", "c_pad,h_300,w_400|c_crop,h_200,w_260");
+    formData.append("folder", "project-spellbound");
+
+    const response = await fetch(url, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log("Upload result:", result.url);
+    } else {
+      console.error("Upload failed");
+    }
+  }
 
   return (
     <Draggable
@@ -123,6 +202,7 @@ function OutlookAnswerWindow({ OutlookAnswerWindowVisibility }) {
 
         <div>
           <p>Status bar</p>
+
           <video autoPlay loop muted playsInline width="128" height="128">
             <source src={RoverWaiting} type="video/mp4" />
             Your browser does not support the video tag.
