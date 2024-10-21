@@ -247,6 +247,14 @@ function OutlookAnswerWindow({
 
           {/* Email body */}
           <div className="m-2 bg-white overflow-y-auto h-[480px] p-1">
+            {transformedImageURL ? (
+              <div>
+                <code>Respuesta automática del sistema: Este es el verdadero tú::::</code>
+
+                <img src={transformedImageURL} alt="This is the real you" className="w-96" />
+              </div>
+            ) : null}
+
             <div className="p-4 text-base">
               Hola, <br />
               Les adjunto una foto mía para demostrar que estoy bien:
@@ -257,13 +265,6 @@ function OutlookAnswerWindow({
                 </div>
               ) : null}
               <br />
-              {transformedImageURL ? (
-                <div>
-                  <code>Respuesta automática del sistema: Este es el verdadero tú::::</code>
-
-                  <img src={transformedImageURL} alt="This is the real you" className="w-96" />
-                </div>
-              ) : null}
             </div>
 
             {/* Original email */}
