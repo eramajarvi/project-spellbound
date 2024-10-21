@@ -22,7 +22,7 @@ function OutlookAnswerWindow({
   const nodeRef = React.useRef(null);
 
   // Set this with your predefined custom named transformation
-  const EAGER_TRANSFORMATION = "t_panic-01";
+  let EAGER_TRANSFORMATION = ""; // Default transformation
   const CLOUDINARY_FOLDER = "project-spellbound";
 
   const { isOutlookAnswerVisible, setOutlookAnswerVisible } = OutlookAnswerWindowVisibility;
@@ -51,39 +51,89 @@ function OutlookAnswerWindow({
 
   // Executed when the image file is picked
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const paramsToSign = {
-      // Parameters that need to be signed
-      timestamp: Math.round(new Date().getTime() / 1000),
-      eager: EAGER_TRANSFORMATION,
-      public_id: crypto.randomUUID(),
-      folder: CLOUDINARY_FOLDER,
-    };
-
     if (event.target.files && event.target.files[0]) {
       setFileIsPicked(true);
-      setRoverWindowVisible(true);
-      setRoverStartSignal(true);
+      //setRoverWindowVisible(true);
+      //setRoverStartSignal(true);
       setImageURL(URL.createObjectURL(event.target.files[0]));
 
       const file = event.target.files[0];
       setImageFile(file);
 
-      // Getting the image file dimensions
+      // Getting the image file dimensions and the aspect ratio
       const img = new Image();
       img.src = URL.createObjectURL(event.target.files[0]);
-      img.onload = () => {
-        console.log({ width: img.width, height: img.height });
+
+      const actions = {
+        "3:4": () => {
+          EAGER_TRANSFORMATION = "t_panic-3_4";
+          return EAGER_TRANSFORMATION;
+        },
+        "4:3": () => {
+          EAGER_TRANSFORMATION = "t_panic-4_3";
+          return EAGER_TRANSFORMATION;
+        },
+        "16:9": () => {
+          EAGER_TRANSFORMATION = "t_panic-16_9";
+          return EAGER_TRANSFORMATION;
+        },
+        "9:16": () => {
+          EAGER_TRANSFORMATION = "t_panic-9_16";
+          return EAGER_TRANSFORMATION;
+        },
+        "1:1": () => {
+          EAGER_TRANSFORMATION = "t_panic-1_1";
+          return EAGER_TRANSFORMATION;
+        },
+        "3:2": () => {
+          EAGER_TRANSFORMATION = "t_panic-3_2";
+          return EAGER_TRANSFORMATION;
+        },
+        "2:3": () => {
+          EAGER_TRANSFORMATION = "t_panic-2_3";
+          return EAGER_TRANSFORMATION;
+        },
+        "16:10": () => {
+          EAGER_TRANSFORMATION = "t_panic-16_10";
+          return EAGER_TRANSFORMATION;
+        },
+        "10:16": () => {
+          EAGER_TRANSFORMATION = "t_panic-10_16";
+          return EAGER_TRANSFORMATION;
+        },
       };
 
-      // Revisar que hacer despues con el archivo seleccionado:
-      getCloudinarySignature(paramsToSign)
-        .then((signature) => {
-          // Use the signature to upload your media to Cloudinary
-          // uploadToCloudinary(file, signature, paramsToSign);
-        })
-        .catch((error) => {
-          console.error("Error fetching signature:", error);
-        });
+      img.onload = () => {
+        const aspectRatio = estimateAspectRatio(img.width, img.height);
+
+        const action =
+          actions[aspectRatio] ||
+          (() => {
+            console.log("Aspect ratio is not recognized. Executing default action.");
+            EAGER_TRANSFORMATION = "t_panic-4";
+          });
+
+        action();
+
+        const paramsToSign = {
+          // Parameters that need to be signed'
+          timestamp: Math.round(new Date().getTime() / 1000),
+          eager: EAGER_TRANSFORMATION,
+          public_id: crypto.randomUUID(),
+          folder: CLOUDINARY_FOLDER,
+        };
+
+        // Revisar que hacer despues con el archivo seleccionado:
+        getCloudinarySignature(paramsToSign)
+          .then((signature) => {
+            console.log("signing params with: " + EAGER_TRANSFORMATION);
+            // Use the signature to upload your media to Cloudinary
+            // uploadToCloudinary(file, signature, paramsToSign);
+          })
+          .catch((error) => {
+            console.error("Error fetching signature:", error);
+          });
+      };
     }
   };
 
