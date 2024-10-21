@@ -66,8 +66,8 @@ function RoverWindow({ RoverStart }) {
 
     fetchData();
 
-    // Set an interval to fetch data every 20 seconds
-    const intervalId = setInterval(fetchData, 20000000);
+    // Set an interval to fetch data every 12 seconds
+    const intervalId = setInterval(fetchData, 12000);
 
     // Cleanup function to clear the interval
     return () => clearInterval(intervalId);
@@ -77,7 +77,8 @@ function RoverWindow({ RoverStart }) {
     <Draggable
       handle="#credits-window-title-bar"
       nodeRef={nodeRef}
-      positionOffset={{ x: "200%", y: "-300%" }}
+      defaultPosition={{ x: 900, y: -500 }}
+      position={null}
     >
       <div
         ref={nodeRef}

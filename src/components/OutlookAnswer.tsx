@@ -144,6 +144,7 @@ function OutlookAnswerWindow({
         const imageTransformed = JSON.parse(xhr.responseText);
         const imageTransformedURL = imageTransformed.eager[0].secure_url;
         setTransformedImageURL(imageTransformedURL);
+        setRoverStartSignal(false);
         console.log("imagen transformada: ", imageTransformedURL);
       } else {
         console.error("Error during upload", xhr.statusText);
