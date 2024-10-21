@@ -28,6 +28,7 @@ function OutlookAnswerWindow({
   const [imageFile, setImageFile] = React.useState<File | null>(null);
   const [fileIsPicked, setFileIsPicked] = React.useState(false);
   const [imageURL, setImageURL] = React.useState(null);
+  const [transformedImageURL, setTransformedImageURL] = React.useState(null);
 
   const [progress, setProgress] = React.useState(0);
 
@@ -136,6 +137,10 @@ function OutlookAnswerWindow({
       if (xhr.status === 200) {
         // Success
         console.log("Upload complete!", xhr.responseText);
+        const imageTransformed = JSON.parse(xhr.responseText);
+        const imageTransformedURL = imageTransformed.eager[0].secure_url;
+        setTransformedImageURL(imageTransformedURL);
+        console.log("imagen transformada: ", imageTransformedURL);
       } else {
         console.error("Error during upload", xhr.statusText);
       }
@@ -255,7 +260,21 @@ function OutlookAnswerWindow({
                   <img src={imageURL} alt="Selected file" className="w-96" />
                 </div>
               ) : null}
+              <br />
+              <code>
+                Respuesta automática del sistema: Este es el verdadero tú::::
+              </code>
+              {transformedImageURL ? (
+                <div>
+                  <img
+                    src={transformedImageURL}
+                    alt="This is the real you"
+                    className="w-96"
+                  />
+                </div>
+              ) : null}
             </div>
+
             <div className="p-4">
               <div className="text-sm">
                 <hr className="border-1 border-black" />
@@ -302,7 +321,7 @@ function OutlookAnswerWindow({
         <div className="status-bar">
           <p className="status-bar-field">Press F1 for help</p>
           <p className="status-bar-field">Slide 1</p>
-          <p className="status-bar-field">CPU Usage: 14%</p>
+          <p className="status-bar-field">Conectado a Internet</p>
         </div>
       </div>
     </Draggable>
