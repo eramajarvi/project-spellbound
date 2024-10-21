@@ -44,7 +44,7 @@ function RoverWindow({ RoverStart }) {
       setCurrentAssetIndex((prevIndex) =>
         getRandomIndex(prevIndex, videoSources.length)
       );
-    }, 10000); // 10 seconds in milliseconds
+    }, 5000); // 10 seconds in milliseconds
 
     console.log("current index:" + currentAssetIndex);
     return () => clearInterval(interval); // Cleanup on unmount
@@ -57,7 +57,7 @@ function RoverWindow({ RoverStart }) {
     const fetchData = async () => {
       try {
         const response = await complete(
-          "El usuario ha intentado cargar su primera foto, pregúntale cómo se siente."
+          "He cargado mi foto, y ahora mismo estoy esperando a que termine la transformación. Pregúntame cómo se siente."
         );
       } catch (err) {
       } finally {
@@ -67,7 +67,7 @@ function RoverWindow({ RoverStart }) {
     fetchData();
 
     // Set an interval to fetch data every 20 seconds
-    const intervalId = setInterval(fetchData, 20000);
+    const intervalId = setInterval(fetchData, 20000000);
 
     // Cleanup function to clear the interval
     return () => clearInterval(intervalId);
@@ -91,8 +91,8 @@ function RoverWindow({ RoverStart }) {
           </div>
         </div>
 
-        <div className="justify-normal bg-black p-2">
-          <div className="flex items-center">
+        <div className="flex items-center bg-black p-4">
+          <div className="">
             <video
               key={currentAssetIndex}
               autoPlay
@@ -105,9 +105,11 @@ function RoverWindow({ RoverStart }) {
               <source src={videoSources[currentAssetIndex]} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+          </div>
 
-            <div>
-              <p className="mt-3 text-from-prompt text-white">{completion}</p>
+          <div className="talk-bubble tri-right left-in">
+            <div className="talktext">
+              <p className="text-base">{completion}</p>
             </div>
           </div>
         </div>

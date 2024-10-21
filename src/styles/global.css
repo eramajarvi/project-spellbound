@@ -95,6 +95,54 @@ ul.tree-view details > summary:before {
   cursor: url("/assets/cursor-pointer.ico"), pointer !important;
 }
 
+/* CSS talk bubble - Taken from https://codepen.io/Founts/pen/AJyVOr */
+.talk-bubble {
+  margin: 40px;
+  display: inline-block;
+  position: relative;
+  width: 300px;
+  height: auto;
+  background-color: lightyellow;
+}
+
+/* talk bubble contents */
+.talktext {
+  padding: 1em;
+  text-align: left;
+  line-height: 1.5em;
+}
+.talktext p {
+  /* remove webkit p margins */
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+
+/* Right triangle, left side slightly down */
+.tri-right.border.left-in:before {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -40px;
+  right: auto;
+  top: 30px;
+  bottom: auto;
+  border: 20px solid;
+  border-color: #666 #666 transparent transparent;
+}
+.tri-right.left-in:after {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -20px;
+  right: auto;
+  top: 38px;
+  bottom: auto;
+  border: 12px solid;
+  border-color: lightyellow lightyellow transparent transparent;
+}
+
 /* Gradient background - based on https://codepen.io/coreh/pen/LQJBLa?editors=1100 */
 .crt::before {
   content: "";
