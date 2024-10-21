@@ -17,15 +17,7 @@ function RoverWindow({ RoverStart, RoverStop }) {
 
   const [currentAssetIndex, setCurrentAssetIndex] = useState(0);
 
-  const videoSources = [
-    Rover01,
-    Rover02,
-    Rover03,
-    Rover04,
-    Rover05,
-    Rover06,
-    Rover07,
-  ];
+  const videoSources = [Rover01, Rover02, Rover03, Rover04, Rover05, Rover06, Rover07];
 
   const getRandomIndex = (currentIndex, length) => {
     let newIndex = Math.floor(Math.random() * length);
@@ -42,12 +34,9 @@ function RoverWindow({ RoverStart, RoverStop }) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentAssetIndex((prevIndex) =>
-        getRandomIndex(prevIndex, videoSources.length)
-      );
-    }, 5000); // 10 seconds in milliseconds
+      setCurrentAssetIndex((prevIndex) => getRandomIndex(prevIndex, videoSources.length));
+    }, 6000); // 6 seconds in milliseconds
 
-    console.log("current index:" + currentAssetIndex);
     return () => clearInterval(interval); // Cleanup on unmount
   });
 
@@ -100,11 +89,7 @@ function RoverWindow({ RoverStart, RoverStop }) {
       defaultPosition={{ x: 900, y: -500 }}
       position={null}
     >
-      <div
-        ref={nodeRef}
-        className="window absolute rover-window"
-        style={{ width: "400px" }}
-      >
+      <div ref={nodeRef} className="window absolute rover-window" style={{ width: "400px" }}>
         <div className="title-bar" id="credits-window-title-bar">
           <div className="title-bar-text"></div>
           <div className="title-bar-controls">
@@ -114,15 +99,7 @@ function RoverWindow({ RoverStart, RoverStop }) {
 
         <div className="flex items-center bg-black p-4">
           <div className="">
-            <video
-              key={currentAssetIndex}
-              autoPlay
-              loop
-              muted
-              playsInline
-              width="128"
-              height="128"
-            >
+            <video key={currentAssetIndex} autoPlay loop muted playsInline width="128" height="128">
               <source src={videoSources[currentAssetIndex]} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
