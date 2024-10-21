@@ -103,8 +103,6 @@ function OutlookAnswerWindow({
     const url =
       "https://api.cloudinary.com/v1_1/" + String(import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME) + "/auto/upload";
 
-    console.log(url);
-
     formData.append("file", file);
     formData.append("api_key", String(import.meta.env.PUBLIC_CLOUDINARY_API_KEY));
     formData.append("timestamp", params.timestamp);
