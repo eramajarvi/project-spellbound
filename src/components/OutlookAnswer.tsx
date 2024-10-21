@@ -15,6 +15,7 @@ function OutlookAnswerWindow({
   RoverWindowVisibility,
   warningWindowVisibility,
   RoverStart,
+  RoverStop,
 }) {
   const nodeRef = React.useRef(null);
 
@@ -23,6 +24,7 @@ function OutlookAnswerWindow({
 
   const { isRoverWindowVisible, setRoverWindowVisible } = RoverWindowVisibility;
   const { roverStartSignal, setRoverStartSignal } = RoverStart;
+  const { roverStopSignal, setRoverStopSignal } = RoverStop;
 
   const { isWarningWindowVisible, setWarningWindowVisible } =
     warningWindowVisibility;
@@ -70,7 +72,7 @@ function OutlookAnswerWindow({
           console.log("Signature:", signature);
           // Use the signature to upload your media to Cloudinary
 
-          //uploadToCloudinary(file, signature, paramsToSign);
+          uploadToCloudinary(file, signature, paramsToSign);
         })
         .catch((error) => {
           console.error("Error fetching signature:", error);
@@ -145,6 +147,7 @@ function OutlookAnswerWindow({
         const imageTransformedURL = imageTransformed.eager[0].secure_url;
         setTransformedImageURL(imageTransformedURL);
         setRoverStartSignal(false);
+        setRoverStopSignal(true);
         console.log("imagen transformada: ", imageTransformedURL);
       } else {
         console.error("Error during upload", xhr.statusText);
@@ -334,7 +337,9 @@ function OutlookAnswerWindow({
 
         <div className="status-bar">
           <p className="status-bar-field">Todo sincronizado</p>
-          <p className="status-bar-field">No hay escapatoria</p>
+          <p className="status-bar-field font-semibold">
+            Desplazar hacia abajo para ver respuesta
+          </p>
           <p className="status-bar-field">Conectado a Internet</p>
         </div>
       </div>

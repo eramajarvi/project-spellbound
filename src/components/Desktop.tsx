@@ -16,6 +16,8 @@ export default function Desktop() {
   const RoverWindowVisibility = { isRoverWindowVisible, setRoverWindowVisible };
   const [roverStartSignal, setRoverStartSignal] = React.useState(false);
   const RoverStart = { roverStartSignal, setRoverStartSignal };
+  const [roverStopSignal, setRoverStopSignal] = React.useState(false);
+  const RoverStop = { roverStopSignal, setRoverStopSignal };
 
   const [isWarningWindowVisible, setWarningWindowVisible] =
     React.useState(false);
@@ -39,10 +41,13 @@ export default function Desktop() {
           RoverWindowVisibility={RoverWindowVisibility}
           warningWindowVisibility={warningWindowVisibility}
           RoverStart={RoverStart}
+          RoverStop={RoverStop}
         />
       ) : null}
 
-      {isRoverWindowVisible ? <RoverWindow RoverStart={RoverStart} /> : null}
+      {isRoverWindowVisible ? (
+        <RoverWindow RoverStart={RoverStart} RoverStop={RoverStop} />
+      ) : null}
 
       {isWarningWindowVisible ? (
         <WarningWindow warningWindowVisibility={warningWindowVisibility} />

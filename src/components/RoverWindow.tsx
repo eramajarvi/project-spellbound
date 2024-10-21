@@ -10,9 +10,10 @@ import Rover07 from "../assets/rover-07.mp4";
 
 import { useCompletion } from "ai/react";
 
-function RoverWindow({ RoverStart }) {
+function RoverWindow({ RoverStart, RoverStop }) {
   const nodeRef = React.useRef(null);
   const { roverStartSignal, setRoverStartSignal } = RoverStart;
+  const { roverStopSignal, setRoverStopSignal } = RoverStop;
 
   const [currentAssetIndex, setCurrentAssetIndex] = useState(0);
 
@@ -50,6 +51,7 @@ function RoverWindow({ RoverStart }) {
     return () => clearInterval(interval); // Cleanup on unmount
   });
 
+  // Load this AI response while the user is waiting for the image to finish transformation
   useEffect(() => {
     // Define the async function
     if (!roverStartSignal) return;
@@ -57,7 +59,7 @@ function RoverWindow({ RoverStart }) {
     const fetchData = async () => {
       try {
         const response = await complete(
-          "He cargado mi foto, y ahora mismo estoy esperando a que termine la transformación. Pregúntame cómo se siente."
+          "He cargado mi foto, y ahora mismo estoy esperando a que termine la introspección ontológica para echar un vistazo a mi alma."
         );
       } catch (err) {
       } finally {
@@ -72,6 +74,24 @@ function RoverWindow({ RoverStart }) {
     // Cleanup function to clear the interval
     return () => clearInterval(intervalId);
   }, [roverStartSignal]);
+
+  // When the image has been transformed and got response, generate this AI response to the user
+  useEffect(() => {
+    // Define the async function
+    //if (!roverStartSignal) return;
+
+    const fetchData = async () => {
+      try {
+        const response = await complete(
+          "La imagen se ha terminado de cargar y la puedo ver al desplazarme un poco más abajo"
+        );
+      } catch (err) {
+      } finally {
+      }
+    };
+
+    fetchData();
+  }, [roverStopSignal]);
 
   return (
     <Draggable
