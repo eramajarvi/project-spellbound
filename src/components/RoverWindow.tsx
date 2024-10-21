@@ -1,9 +1,77 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Draggable from "react-draggable";
-import RoverWaiting from "../assets/rover-waiting.mp4";
+import Rover01 from "../assets/rover-01.mp4";
+import Rover02 from "../assets/rover-02.mp4";
+import Rover03 from "../assets/rover-03.mp4";
+import Rover04 from "../assets/rover-04.mp4";
+import Rover05 from "../assets/rover-05.mp4";
+import Rover06 from "../assets/rover-06.mp4";
+import Rover07 from "../assets/rover-07.mp4";
 
-function RoverWindow({}) {
+import { useCompletion } from "ai/react";
+
+function RoverWindow({ RoverStart }) {
   const nodeRef = React.useRef(null);
+  const { roverStartSignal, setRoverStartSignal } = RoverStart;
+
+  const [currentAssetIndex, setCurrentAssetIndex] = useState(0);
+
+  const videoSources = [
+    Rover01,
+    Rover02,
+    Rover03,
+    Rover04,
+    Rover05,
+    Rover06,
+    Rover07,
+  ];
+
+  const getRandomIndex = (currentIndex, length) => {
+    let newIndex = Math.floor(Math.random() * length);
+    // Ensure the new index is different from the current index
+    while (newIndex === currentIndex) {
+      newIndex = Math.floor(Math.random() * length);
+    }
+    return newIndex;
+  };
+
+  const { completion, complete } = useCompletion({
+    api: "/api/completion",
+  });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentAssetIndex((prevIndex) =>
+        getRandomIndex(prevIndex, videoSources.length)
+      );
+    }, 10000); // 10 seconds in milliseconds
+
+    console.log("current index:" + currentAssetIndex);
+    return () => clearInterval(interval); // Cleanup on unmount
+  });
+
+  useEffect(() => {
+    // Define the async function
+    if (!roverStartSignal) return;
+
+    const fetchData = async () => {
+      try {
+        const response = await complete(
+          "El usuario ha intentado cargar su primera foto, pregúntale cómo se siente."
+        );
+      } catch (err) {
+      } finally {
+      }
+    };
+
+    fetchData();
+
+    // Set an interval to fetch data every 20 seconds
+    const intervalId = setInterval(fetchData, 20000);
+
+    // Cleanup function to clear the interval
+    return () => clearInterval(intervalId);
+  }, [roverStartSignal]);
 
   return (
     <Draggable
@@ -23,14 +91,23 @@ function RoverWindow({}) {
           </div>
         </div>
 
-        <div className="justify-normal bg-black">
+        <div className="justify-normal bg-black p-2">
           <div className="flex items-center">
-            <video autoPlay loop muted playsInline width="128" height="128">
-              <source src={RoverWaiting} type="video/mp4" />
+            <video
+              key={currentAssetIndex}
+              autoPlay
+              loop
+              muted
+              playsInline
+              width="128"
+              height="128"
+            >
+              <source src={videoSources[currentAssetIndex]} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+
             <div>
-              <p className="text-white"> ¿Estás seguro que estás bien?</p>
+              <p className="mt-3 text-from-prompt text-white">{completion}</p>
             </div>
           </div>
         </div>

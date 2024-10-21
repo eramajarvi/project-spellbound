@@ -21,7 +21,7 @@ export default function Email01() {
         </div>
 
         <div className="p-1">
-          <p className="text-sm">
+          <div className="text-sm">
             <p className="font-extrabold">
               Haga click en Responder a este email y{" "}
               <u>enviénos una foto suya</u> para asegurarnos que está bien.
@@ -49,7 +49,7 @@ export default function Email01() {
             <br />
             Espere más instrucciones de nuestra parte una vez nos aseguremos que
             está bien.
-          </p>
+          </div>
         </div>
       </div>
     </>

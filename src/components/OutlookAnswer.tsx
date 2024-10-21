@@ -14,6 +14,7 @@ function OutlookAnswerWindow({
   OutlookAnswerWindowVisibility,
   RoverWindowVisibility,
   warningWindowVisibility,
+  RoverStart,
 }) {
   const nodeRef = React.useRef(null);
 
@@ -21,6 +22,7 @@ function OutlookAnswerWindow({
     OutlookAnswerWindowVisibility;
 
   const { isRoverWindowVisible, setRoverWindowVisible } = RoverWindowVisibility;
+  const { roverStartSignal, setRoverStartSignal } = RoverStart;
 
   const { isWarningWindowVisible, setWarningWindowVisible } =
     warningWindowVisibility;
@@ -53,6 +55,7 @@ function OutlookAnswerWindow({
     if (event.target.files && event.target.files[0]) {
       setFileIsPicked(true);
       setRoverWindowVisible(true);
+      setRoverStartSignal(true);
       setImageURL(URL.createObjectURL(event.target.files[0]));
 
       const file = event.target.files[0];
@@ -67,7 +70,7 @@ function OutlookAnswerWindow({
           console.log("Signature:", signature);
           // Use the signature to upload your media to Cloudinary
 
-          uploadToCloudinary(file, signature, paramsToSign);
+          //uploadToCloudinary(file, signature, paramsToSign);
         })
         .catch((error) => {
           console.error("Error fetching signature:", error);
