@@ -7,6 +7,7 @@ import AttachIcon from "../assets/attach.png";
 import CutIcon from "../assets/cut.png";
 import CopyIcon from "../assets/copy.png";
 import PasteIcon from "../assets/paste.png";
+import SaveIcon from "../assets/save.png";
 import Horro01 from "../assets/horror-01.webp";
 
 function OutlookAnswerWindow({
@@ -246,11 +247,17 @@ function OutlookAnswerWindow({
                 <p>Pegar</p>
               </div>
             </button>
+
+            <button className="mx-1 inactive-text">
+              <div className="inline-flex flex-col items-center p-1">
+                <img src={SaveIcon.src} className="w-6 grayscale" />
+                <p>Guardar</p>
+              </div>
+            </button>
           </div>
 
           {/* Email body */}
           <div className="m-2 bg-white overflow-y-auto h-[480px] p-1">
-            {/* Original email */}
             <div className="p-4 text-base">
               Hola, <br />
               Les adjunto una foto mía para demostrar que estoy bien:
@@ -261,11 +268,13 @@ function OutlookAnswerWindow({
                 </div>
               ) : null}
               <br />
-              <code>
-                Respuesta automática del sistema: Este es el verdadero tú::::
-              </code>
               {transformedImageURL ? (
                 <div>
+                  <code>
+                    Respuesta automática del sistema: Este es el verdadero
+                    tú::::
+                  </code>
+
                   <img
                     src={transformedImageURL}
                     alt="This is the real you"
@@ -275,6 +284,7 @@ function OutlookAnswerWindow({
               ) : null}
             </div>
 
+            {/* Original email */}
             <div className="p-4">
               <div className="text-sm">
                 <hr className="border-1 border-black" />
@@ -319,8 +329,8 @@ function OutlookAnswerWindow({
         </div>
 
         <div className="status-bar">
-          <p className="status-bar-field">Press F1 for help</p>
-          <p className="status-bar-field">Slide 1</p>
+          <p className="status-bar-field">Todo sincronizado</p>
+          <p className="status-bar-field">No hay escapatoria</p>
           <p className="status-bar-field">Conectado a Internet</p>
         </div>
       </div>
