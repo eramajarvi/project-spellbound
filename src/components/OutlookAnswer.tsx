@@ -2,6 +2,8 @@ import React from "react";
 
 import Draggable from "react-draggable";
 
+import { estimateAspectRatio } from "../helpers/estimateAspectRatio";
+
 import OutlookIcon from "../assets/outlook.png";
 import AttachIcon from "../assets/attach.png";
 import CutIcon from "../assets/cut.png";
@@ -18,6 +20,10 @@ function OutlookAnswerWindow({
   RoverStop,
 }) {
   const nodeRef = React.useRef(null);
+
+  // Set this with your predefined custom named transformation
+  const EAGER_TRANSFORMATION = "t_panic-01";
+  const CLOUDINARY_FOLDER = "project-spellbound";
 
   const { isOutlookAnswerVisible, setOutlookAnswerVisible } = OutlookAnswerWindowVisibility;
 
@@ -43,16 +49,15 @@ function OutlookAnswerWindow({
     fileInputRef.current.click();
   };
 
+  // Executed when the image file is picked
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const paramsToSign = {
       // Parameters that need to be signed
       timestamp: Math.round(new Date().getTime() / 1000),
-      eager: "t_panic-01",
+      eager: EAGER_TRANSFORMATION,
       public_id: crypto.randomUUID(),
-      folder: "project-spellbound",
+      folder: CLOUDINARY_FOLDER,
     };
-
-    console.log(paramsToSign);
 
     if (event.target.files && event.target.files[0]) {
       setFileIsPicked(true);
@@ -61,18 +66,20 @@ function OutlookAnswerWindow({
       setImageURL(URL.createObjectURL(event.target.files[0]));
 
       const file = event.target.files[0];
-
-      console.log("Selected files:", file);
       setImageFile(file);
 
-      // Revisar que hacer despues con el archivo seleccionado:
+      // Getting the image file dimensions
+      const img = new Image();
+      img.src = URL.createObjectURL(event.target.files[0]);
+      img.onload = () => {
+        console.log({ width: img.width, height: img.height });
+      };
 
+      // Revisar que hacer despues con el archivo seleccionado:
       getCloudinarySignature(paramsToSign)
         .then((signature) => {
-          console.log("Signature:", signature);
           // Use the signature to upload your media to Cloudinary
-
-          uploadToCloudinary(file, signature, paramsToSign);
+          // uploadToCloudinary(file, signature, paramsToSign);
         })
         .catch((error) => {
           console.error("Error fetching signature:", error);
@@ -108,8 +115,8 @@ function OutlookAnswerWindow({
     formData.append("timestamp", params.timestamp);
     formData.append("public_id", params.public_id);
     formData.append("signature", signature);
-    formData.append("eager", "t_panic-01");
-    formData.append("folder", "project-spellbound");
+    formData.append("eager", EAGER_TRANSFORMATION);
+    formData.append("folder", CLOUDINARY_FOLDER);
 
     const xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
@@ -118,7 +125,6 @@ function OutlookAnswerWindow({
     // Update progress (can be used to show progress indicator)
     xhr.upload.addEventListener("progress", (e) => {
       setProgress(Math.round((e.loaded * 100.0) / e.total));
-      console.log(Math.round((e.loaded * 100.0) / e.total));
     });
 
     xhr.onreadystatechange = (e) => {
@@ -126,7 +132,6 @@ function OutlookAnswerWindow({
         const response = JSON.parse(xhr.responseText);
 
         setImageFile(response.secure_url);
-        console.log(response.secure_url);
       }
     };
 
@@ -135,8 +140,6 @@ function OutlookAnswerWindow({
     xhr.onload = function () {
       if (xhr.status === 200) {
         // Success
-
-        console.log("Upload complete!", xhr.responseText);
         const imageTransformed = JSON.parse(xhr.responseText);
         const imageTransformedURL = imageTransformed.eager[0].secure_url;
         setTransformedImageURL(imageTransformedURL);
@@ -145,8 +148,6 @@ function OutlookAnswerWindow({
 
         setDownloadButtonStyle("");
         setCanDownload(true);
-
-        console.log(canDownload);
       } else {
         console.error("Error during upload", xhr.statusText);
       }
