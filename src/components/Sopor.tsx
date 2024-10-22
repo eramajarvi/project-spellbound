@@ -1,25 +1,77 @@
 import "../styles/fileExplorer.css";
 
 import soporImage from "../assets/sopor.webp";
+import inboxIcon from "../assets/inbox.png";
 
 import React, { useEffect } from "react";
+import Draggable from "react-draggable";
 
 function Sopor({ soporVisibility, desktopVisibility }) {
   const { isSoporVisible, setSoporVisible } = soporVisibility;
   const { isDesktopVisible, setDesktopVisible } = desktopVisibility;
+
+  const nodeRef = React.useRef(null);
+
   return (
     <>
-      <div className="flex relative fileExplorer">
+      <div ref={nodeRef} className="flex relative fileExplorer">
         <img src={soporImage.src} />
-        <a
+        {/* <a
           className="absolute fileLink left-[300px] top-[100px] text-white text-2xl"
           onClick={() => {
             setSoporVisible(false), setDesktopVisible(true);
           }}
         >
           entrar al sistema
-        </a>
+        </a> */}
       </div>
+
+      <Draggable
+        nodeRef={nodeRef}
+        handle="#new-email-window-title-bar"
+        defaultPosition={{ x: 200, y: -450 }}
+        position={null}
+      >
+        <div className="window absolute" style={{ width: "300px" }}>
+          <div className="title-bar" id="new-email-window-title-bar">
+            <div className="title-bar-text">Nueva notificación</div>
+            <div className="title-bar-controls">
+              <button aria-label="Help" />
+              <button aria-label="Close" />
+            </div>
+          </div>
+
+          <div className="window-body relative inline-flex flex-col">
+            <div className="flex items-center p-1">
+              <div className="">
+                <img src={inboxIcon.src} className="pixelated" />
+              </div>
+
+              <div className="ml-3 w-64">
+                <p>Tiene un nuevo email en su bandeja de entrada. ¿Desea abrirlo ahora?</p>
+              </div>
+            </div>
+
+            <div className="items-center p-2">
+              <button
+                className="m-2"
+                onClick={() => {
+                  setSoporVisible(false), setDesktopVisible(true);
+                }}
+              >
+                Sí
+              </button>
+              <button
+                onClick={() => {
+                  setSoporVisible(false), setDesktopVisible(true);
+                }}
+              >
+                Por supuesto
+              </button>
+            </div>
+          </div>
+        </div>
+      </Draggable>
     </>
   );
 }
