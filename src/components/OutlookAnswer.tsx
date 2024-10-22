@@ -42,6 +42,7 @@ function OutlookAnswerWindow({
   const [progress, setProgress] = React.useState(0);
   const [canDownload, setCanDownload] = React.useState(false);
   const [downloadButtonStyle, setDownloadButtonStyle] = React.useState("grayscale");
+  const [canAttach, setCanAttach] = React.useState(true);
 
   const currentDate = new Date().toLocaleString();
 
@@ -53,8 +54,8 @@ function OutlookAnswerWindow({
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       setFileIsPicked(true);
-      //setRoverWindowVisible(true);
-      //setRoverStartSignal(true);
+      setRoverWindowVisible(true);
+      setRoverStartSignal(true);
       setImageURL(URL.createObjectURL(event.target.files[0]));
 
       const file = event.target.files[0];
@@ -128,7 +129,7 @@ function OutlookAnswerWindow({
           .then((signature) => {
             console.log("signing params with: " + EAGER_TRANSFORMATION);
             // Use the signature to upload your media to Cloudinary
-            // uploadToCloudinary(file, signature, paramsToSign);
+            uploadToCloudinary(file, signature, paramsToSign);
           })
           .catch((error) => {
             console.error("Error fetching signature:", error);
@@ -154,8 +155,11 @@ function OutlookAnswerWindow({
     }
   }
 
+  // Start upload flow to Cloudinary
   async function uploadToCloudinary(file, signature, params) {
     const formData = new FormData();
+    setCanAttach(false);
+    setTransformedImageURL(null);
 
     const url =
       "https://api.cloudinary.com/v1_1/" + String(import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME) + "/auto/upload";
@@ -198,6 +202,7 @@ function OutlookAnswerWindow({
 
         setDownloadButtonStyle("");
         setCanDownload(true);
+        setCanAttach(true);
       } else {
         console.error("Error during upload", xhr.statusText);
       }
@@ -243,7 +248,7 @@ function OutlookAnswerWindow({
 
           {/* Tools bar */}
           <div className="m-2">
-            <button className="mr-1">
+            <button className="mr-1" disabled={!canAttach}>
               <div className="inline-flex flex-col items-center p-1" onClick={handleAttachButtonClick}>
                 <img src={AttachIcon.src} className="w-6" />
                 <p>Adjuntar</p>
@@ -297,7 +302,7 @@ function OutlookAnswerWindow({
           {/* Email body */}
           <div className="m-2 bg-white overflow-y-auto h-[480px] p-1">
             {transformedImageURL ? (
-              <div>
+              <div className="p-4 text-base">
                 <code>Respuesta automática del sistema: Este es el verdadero tú::::</code>
 
                 <img src={transformedImageURL} alt="This is the real you" className="w-96" />

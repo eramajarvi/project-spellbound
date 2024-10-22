@@ -58,7 +58,7 @@ function RoverWindow({ RoverStart, RoverStop }) {
     fetchData();
 
     // Set an interval to fetch data every 12 seconds
-    const intervalId = setInterval(fetchData, 12000);
+    const intervalId = setInterval(fetchData, 25000);
 
     // Cleanup function to clear the interval
     return () => clearInterval(intervalId);
