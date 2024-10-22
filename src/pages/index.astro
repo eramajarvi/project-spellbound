@@ -5,6 +5,8 @@ import "../styles/global.css";
 import ContainerLayout from "../layouts/ContainerLayout.astro";
 import FileExplorer from "./fileExplorer";
 
+import TooSmallWindow from "../components/TooSmall";
+
 const pageDescription = "You is not the only you out there, see the real you inside you.";
 const pageOgImage = "/og.webp";
 const pageUrl = Astro.url.href;
@@ -15,5 +17,9 @@ const pageUrl = Astro.url.href;
 
   <span class="hidden lg:block">
     <FileExplorer client:only="react" />
+  </span>
+
+  <span class="lg:hidden">
+    <TooSmallWindow client:only="react" />
   </span>
 </ContainerLayout>
