@@ -13,6 +13,7 @@ import PeopleIcon from "../assets/useremail.png";
 import AnswerIcon from "../assets/answer.ico";
 import PrintIcon from "../assets/print.ico";
 import DeleteIcon from "../assets/delete.ico";
+import RemoteFolder from "../assets/remotefolder.png";
 
 import Email01 from "./emails/Email-01";
 
@@ -25,10 +26,10 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility 
 
   return (
     <Draggable handle="#outlook-window-title-bar" nodeRef={nodeRef} defaultPosition={{ x: 260, y: 50 }} position={null}>
-      <div ref={nodeRef} className="window absolute" style={{ width: "850px", height: "700px" }}>
+      <div ref={nodeRef} className="window absolute" style={{ width: "870px", height: "700px" }}>
         <div className="title-bar" id="outlook-window-title-bar">
           <div className="title-bar-text flex items-center">
-            <img src={OutlookIcon.src} />
+            <img src={OutlookIcon.src} className="w-4" />
             <p>Outlook Express</p>
           </div>
           <div className="title-bar-controls">
@@ -37,54 +38,164 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility 
           </div>
         </div>
 
+        {/* Contenedor de navegación */}
         <div className="window-body flex justify-normal">
-          <div className="w-48">
-            <ul className="tree-view">
-              <li>
-                <div className="flex items-center">
-                  <img className="pixelated" src={LocalFoldersIcon.src} />
-                  <p className="font-extrabold ml-2">Carpetas locales</p>
-                </div>
-                <ul>
-                  <li>
-                    <a className="flex items-center font-bold" href="">
-                      <img className="pixelated" src={InboxIcon.src} />
-                      <p>Bandeja de entrada</p>
-                    </a>
-                  </li>
-                  <li>
-                    <div className="flex items-center">
-                      <img className="pixelated" src={ContactsIcon.src} />
-                      <p className="ml-1">Libreta de contactos</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="flex items-center">
-                      <img className="pixelated" src={DraftsIcon.src} />
-                      <p className="ml-1">Borradores</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="flex items-center">
-                      <img className="pixelated" src={DeletedIcon.src} />
-                      <p className="ml-1">Eliminados</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="flex items-center">
-                      <img className="pixelated" src={OutboxIcon.src} />
-                      <p className="ml-1">Bandeja de salida</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="flex items-center">
-                      <img className="pixelated" src={SentIcon.src} />
-                      <p className="ml-1">Enviados</p>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+          <div className="flex-col">
+            {/* Local folders */}
+            <div className="w-52">
+              <ul className="tree-view">
+                <li>
+                  <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                    <img className="pixelated" src={LocalFoldersIcon.src} />
+                    <p className="font-extrabold ml-2">Carpetas locales</p>
+                  </div>
+                  <ul>
+                    <li>
+                      <div className="flex items-center bg-[#3d64bd] text-white">
+                        <img className="pixelated w-6" src={InboxIcon.src} />
+                        <p className="ml-1">Bandeja de entrada</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={ContactsIcon.src} />
+                        <p className="ml-1">Libreta de contactos</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={DraftsIcon.src} />
+                        <p className="ml-1">Borradores</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={DeletedIcon.src} />
+                        <p className="ml-1">Eliminados</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={OutboxIcon.src} />
+                        <p className="ml-1">Bandeja de salida</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={SentIcon.src} />
+                        <p className="ml-1">Enviados</p>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            {/* Remote folders */}
+            <div className="w-52 mt-4">
+              <ul className="tree-view">
+                <li>
+                  <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                    <img className="pixelated" src={LocalFoldersIcon.src} />
+                    <p className="font-extrabold ml-2">Carpetas remotas</p>
+                  </div>
+                  <ul>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={RemoteFolder.src} />
+                        <p className="ml-1">caso a10r24</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={RemoteFolder.src} />
+                        <p className="ml-1">7b95461b</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={RemoteFolder.src} />
+                        <p className="ml-1">f38458bc</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={RemoteFolder.src} />
+                        <p className="ml-1">5a3ba32e</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={RemoteFolder.src} />
+                        <p className="ml-1">94e1052f</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={RemoteFolder.src} />
+                        <p className="ml-1">761ddbfd</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={RemoteFolder.src} />
+                        <p className="ml-1">001c9414</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={RemoteFolder.src} />
+                        <p className="ml-1">6398ad6b</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={RemoteFolder.src} />
+                        <p className="ml-1">2c3b9c96</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={RemoteFolder.src} />
+                        <p className="ml-1">cd5f88b9</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={RemoteFolder.src} />
+                        <p className="ml-1">5dc1d633</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={RemoteFolder.src} />
+                        <p className="ml-1">5dc1d633</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={RemoteFolder.src} />
+                        <p className="ml-1">70f1520a</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex items-center hover:bg-[#3d64bd] hover:text-white hover:cursor-not-allowed">
+                        <img className="pixelated w-6" src={RemoteFolder.src} />
+                        <p className="ml-1">d5ab107f</p>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            {/* Outlook Branding */}
+            <div className="w-52 mt-4 flex items-center font-semibold">
+              <div className="w-6 mr-1">
+                <img className="pixelated" src={OutlookIcon.src} />
+              </div>
+              <p>Outlook Express 6</p>
+            </div>
           </div>
 
           {/* Contenedor de emails */}
@@ -102,7 +213,7 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility 
               </li>
 
               {/* Email 2 */}
-              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5">
+              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5 hover:cursor-not-allowed">
                 <div className="">
                   <img className="pixelated" src={PeopleIcon.src} />
                 </div>
@@ -113,7 +224,7 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility 
               </li>
 
               {/* Email 3 */}
-              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5">
+              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5 hover:cursor-not-allowed">
                 <div className="">
                   <img className="pixelated" src={PeopleIcon.src} />
                 </div>
@@ -124,7 +235,7 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility 
               </li>
 
               {/* Email 4 */}
-              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5">
+              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5 hover:cursor-not-allowed">
                 <div className="">
                   <img className="pixelated" src={PeopleIcon.src} />
                 </div>
@@ -135,7 +246,7 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility 
               </li>
 
               {/* Email 5 */}
-              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5">
+              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5 hover:cursor-not-allowed">
                 <div className="">
                   <img className="pixelated" src={PeopleIcon.src} />
                 </div>
@@ -146,7 +257,7 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility 
               </li>
 
               {/* Email 6 */}
-              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5">
+              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5 hover:cursor-not-allowed">
                 <div className="">
                   <img className="pixelated" src={PeopleIcon.src} />
                 </div>
@@ -157,13 +268,24 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility 
               </li>
 
               {/* Email 7 */}
-              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5">
+              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5 hover:cursor-not-allowed">
                 <div className="">
                   <img className="pixelated" src={PeopleIcon.src} />
                 </div>
                 <div className="ml-3 w-52">
                   <p className="leading-4 font-semibold">Reenvía este email a 256 personas diferentes o ya verás</p>
                   <p className="leading-4">Haz caído en la maldición del príncipe nigeriano, ahora debes...</p>
+                </div>
+              </li>
+
+              {/* Email 8 */}
+              <li className="w-60 mt-2 flex items-center hover:bg-[#3d64bd] hover:text-white p-1.5 hover:cursor-not-allowed">
+                <div className="">
+                  <img className="pixelated" src={PeopleIcon.src} />
+                </div>
+                <div className="ml-3 w-52">
+                  <p className="leading-4 font-semibold">Llamé a un taxista no a un taxidermista</p>
+                  <p className="leading-4">Esta es la quinta vez que presento una queja formal antes ustedes...</p>
                 </div>
               </li>
             </ul>
