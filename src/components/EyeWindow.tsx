@@ -9,12 +9,7 @@ function EyeWindow({ eyeWindowVisibility }) {
   const { isEyeWindowVisible, setEyeWindowVisible } = eyeWindowVisibility;
 
   return (
-    <Draggable
-      handle="#credits-window-title-bar"
-      nodeRef={nodeRef}
-      defaultPosition={{ x: 90, y: -300 }}
-      position={null}
-    >
+    <Draggable handle="#credits-window-title-bar" nodeRef={nodeRef} defaultPosition={{ x: 90, y: 500 }} position={null}>
       <div ref={nodeRef} className="window absolute" style={{ width: "128px" }}>
         <div className="title-bar" id="credits-window-title-bar">
           <div className="title-bar-text"></div>

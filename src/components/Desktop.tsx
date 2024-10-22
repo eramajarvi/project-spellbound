@@ -4,6 +4,7 @@ import OutlookAnswerWindow from "./OutlookAnswer";
 import RoverWindow from "./RoverWindow";
 import WarningWindow from "./WarningWindow";
 import EyeWindow from "./EyeWindow";
+import ShaderWrapper from "./ShaderWrapper";
 
 export default function Desktop() {
   const [isOutlookAnswerVisible, setOutlookAnswerVisible] = React.useState(false);
@@ -22,16 +23,31 @@ export default function Desktop() {
   const [isEyeWindowVisible, setEyeWindowVisible] = React.useState(false);
   const eyeWindowVisibility = { isEyeWindowVisible, setEyeWindowVisible };
 
+  const [isBlissBgVisible, setBlissBgVisible] = React.useState(true);
+  const blissBgVisibility = { isBlissBgVisible, setBlissBgVisible };
+
   const [isWarningWindowVisible, setWarningWindowVisible] = React.useState(false);
   const warningWindowVisibility = {
     isWarningWindowVisible,
     setWarningWindowVisible,
   };
 
+  const [isShaderVisible, setIsShaderVisible] = React.useState(false);
+  const shaderVisibility = { isShaderVisible, setIsShaderVisible };
+
   return (
     <>
-      <div className="crt"></div>
-      <div className="absolute h-full w-full bg-[url('src/assets/Bliss.jpg')] bg-no-repeat bg-cover"></div>
+      <div className="crt">
+        {/* Background Shader Container */}
+        <div className="size-full absolute" id="shadderContainer">
+          {isShaderVisible ? <ShaderWrapper shaderVisibility={shaderVisibility} /> : null}
+        </div>
+      </div>
+
+      {isBlissBgVisible ? (
+        <div className="absolute h-full w-full bg-[url('src/assets/Bliss.jpg')] bg-no-repeat bg-cover" />
+      ) : null}
+
       <OutlookWindow
         OutlookAnswerWindowVisibility={OutlookAnswerWindowVisibility}
         warningWindowVisibility={warningWindowVisibility}
@@ -45,6 +61,8 @@ export default function Desktop() {
           RoverStart={RoverStart}
           RoverStop={RoverStop}
           eyeWindowVisibility={eyeWindowVisibility}
+          shaderVisibility={shaderVisibility}
+          blissBgVisibility={blissBgVisibility}
         />
       ) : null}
 

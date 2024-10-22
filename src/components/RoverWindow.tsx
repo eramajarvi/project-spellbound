@@ -86,10 +86,10 @@ function RoverWindow({ RoverStart, RoverStop }) {
     <Draggable
       handle="#credits-window-title-bar"
       nodeRef={nodeRef}
-      defaultPosition={{ x: 900, y: -500 }}
+      defaultPosition={{ x: 900, y: 250 }}
       position={null}
     >
-      <div ref={nodeRef} className="window absolute rover-window" style={{ width: "400px" }}>
+      <div ref={nodeRef} className="absolute rover-window" style={{ width: "400px" }}>
         <div className="title-bar" id="credits-window-title-bar">
           <div className="title-bar-text"></div>
           <div className="title-bar-controls">

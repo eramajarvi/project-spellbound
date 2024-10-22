@@ -19,6 +19,8 @@ function OutlookAnswerWindow({
   RoverStart,
   RoverStop,
   eyeWindowVisibility,
+  shaderVisibility,
+  blissBgVisibility,
 }) {
   const nodeRef = React.useRef(null);
 
@@ -27,6 +29,7 @@ function OutlookAnswerWindow({
   const CLOUDINARY_FOLDER = "project-spellbound";
 
   const { isOutlookAnswerVisible, setOutlookAnswerVisible } = OutlookAnswerWindowVisibility;
+  const { isShaderVisible, setIsShaderVisible } = shaderVisibility;
 
   const { isRoverWindowVisible, setRoverWindowVisible } = RoverWindowVisibility;
   const { roverStartSignal, setRoverStartSignal } = RoverStart;
@@ -34,6 +37,7 @@ function OutlookAnswerWindow({
 
   const { isWarningWindowVisible, setWarningWindowVisible } = warningWindowVisibility;
   const { isEyeWindowVisible, setEyeWindowVisible } = eyeWindowVisibility;
+  const { isBlissBgVisible, setBlissBgVisible } = blissBgVisibility;
 
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const [imageFile, setImageFile] = React.useState<File | null>(null);
@@ -201,11 +205,12 @@ function OutlookAnswerWindow({
         setTransformedImageURL(imageTransformedURL);
         setRoverStartSignal(false);
         setRoverStopSignal(true);
-
         setDownloadButtonStyle("");
         setCanDownload(true);
         setCanAttach(true);
         setEyeWindowVisible(true);
+        setIsShaderVisible(true);
+        setBlissBgVisible(false);
       } else {
         console.error("Error during upload", xhr.statusText);
       }
@@ -213,7 +218,7 @@ function OutlookAnswerWindow({
   }
 
   return (
-    <Draggable handle="#outlook-window-title-bar" nodeRef={nodeRef} positionOffset={{ x: "30%", y: "-95%" }}>
+    <Draggable handle="#outlook-window-title-bar" nodeRef={nodeRef} defaultPosition={{ x: 400, y: 30 }} position={null}>
       <div ref={nodeRef} className="window absolute" style={{ width: "850px", height: "700px" }}>
         <div className="title-bar" id="outlook-window-title-bar">
           <div className="title-bar-text flex items-center">

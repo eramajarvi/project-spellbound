@@ -9,7 +9,12 @@ function WarningWindow({ warningWindowVisibility }) {
 
   return (
     <div className="">
-      <Draggable handle="#title-bar-warning-window" nodeRef={nodeRef} positionOffset={{ x: "250%", y: "-700%" }}>
+      <Draggable
+        handle="#title-bar-warning-window"
+        nodeRef={nodeRef}
+        defaultPosition={{ x: 500, y: 250 }}
+        position={null}
+      >
         <div ref={nodeRef} className="window absolute" style={{ width: "300px" }}>
           <div className="title-bar" id="title-bar-warning-window">
             <div className="title-bar-text">¿Te quieres ir?</div>

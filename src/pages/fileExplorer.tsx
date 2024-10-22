@@ -10,6 +10,8 @@ import Desktop from "../components/Desktop";
 
 import SoporPicture from "../components/Sopor";
 
+import ShaderWrapper from "../components/ShaderWrapper";
+
 import React from "react";
 
 export default function FileExplorer() {
@@ -80,10 +82,7 @@ export default function FileExplorer() {
 
       <div>
         {isCreditsVisible ? (
-          <Creditos
-            creditsVisibility={creditsVisibility}
-            userFolderVisibility={userFolderVisibility}
-          />
+          <Creditos creditsVisibility={creditsVisibility} userFolderVisibility={userFolderVisibility} />
         ) : null}
       </div>
 
@@ -91,10 +90,7 @@ export default function FileExplorer() {
 
       <div>
         {isSoporVisible ? (
-          <SoporPicture
-            soporVisibility={soporVisibility}
-            desktopVisibility={desktopVisibility}
-          />
+          <SoporPicture soporVisibility={soporVisibility} desktopVisibility={desktopVisibility} />
         ) : null}
       </div>
     </>
