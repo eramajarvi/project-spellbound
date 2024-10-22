@@ -10,7 +10,7 @@ import Desktop from "../components/Desktop";
 
 import SoporPicture from "../components/Sopor";
 
-import ShaderWrapper from "../components/ShaderWrapper";
+import CaseTwoReportOne from "../components/CaseTwoReportOne";
 
 import React from "react";
 
@@ -35,6 +35,9 @@ export default function FileExplorer() {
 
   const [isDesktopVisible, setDesktopVisible] = React.useState(false);
   const desktopVisibility = { isDesktopVisible, setDesktopVisible };
+
+  const [isReportOneVisible, setReportOneVisible] = React.useState(false);
+  const ReportOneVisibility = { isReportOneVisible, setReportOneVisible };
 
   return (
     <>
@@ -66,6 +69,7 @@ export default function FileExplorer() {
             caseTwoVisibility={caseTwoVisibility}
             userFolderVisibility={userFolderVisibility}
             soporVisibility={soporVisibility}
+            ReportOneVisibility={ReportOneVisibility}
           />
         ) : null}
       </div>
@@ -91,6 +95,12 @@ export default function FileExplorer() {
       <div>
         {isSoporVisible ? (
           <SoporPicture soporVisibility={soporVisibility} desktopVisibility={desktopVisibility} />
+        ) : null}
+      </div>
+
+      <div>
+        {isReportOneVisible ? (
+          <CaseTwoReportOne ReportOneVisibility={ReportOneVisibility} caseTwoVisibility={caseTwoVisibility} />
         ) : null}
       </div>
     </>

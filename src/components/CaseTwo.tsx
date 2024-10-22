@@ -2,13 +2,16 @@ import "../styles/fileExplorer.css";
 
 import upIcon from "../assets/up.png";
 import imageIcon from "../assets/image.png";
+import documentIcon from "../assets/document.png";
+import IEICon from "../assets/internetexplorer.png";
 
 import React, { useEffect } from "react";
 
-function CaseTwo({ caseTwoVisibility, userFolderVisibility, soporVisibility }) {
+function CaseTwo({ caseTwoVisibility, userFolderVisibility, soporVisibility, ReportOneVisibility }) {
   const { isCaseTwoVisible, setCaseTwoVisible } = caseTwoVisibility;
   const { isUserFolderVisible, setUserFolderVisible } = userFolderVisibility;
   const { isSoporVisible, setSoporVisible } = soporVisibility;
+  const { isReportOneVisible, setReportOneVisible } = ReportOneVisibility;
 
   return (
     <>
@@ -53,6 +56,35 @@ function CaseTwo({ caseTwoVisibility, userFolderVisibility, soporVisibility }) {
                 </td>
                 <td className="detailsColumn">500 kB</td>
                 <td className="detailsColumn">14/03/2024, 21:45</td>
+              </tr>
+
+              <tr>
+                <td data-value="">
+                  <a
+                    className="fileLink flex items-center"
+                    onClick={() => (setCaseTwoVisible(false), setReportOneVisible(true))}
+                  >
+                    <img src={documentIcon.src} alt="Icon of generic document" className="w-6" />
+                    <p>reporte de relación tiempo y conciencia.pdf</p>
+                  </a>
+                </td>
+                <td className="detailsColumn">172 kB</td>
+                <td className="detailsColumn">24/05/2016, 21:45</td>
+              </tr>
+
+              <tr>
+                <td data-value="">
+                  <a
+                    className="fileLink flex items-center"
+                    href="https://eramajarvi-project-overflow.vercel.app"
+                    target="_blank"
+                  >
+                    <img src={IEICon.src} alt="Icon of generic document" className="w-6" />
+                    <p>segmentation_fault.url</p>
+                  </a>
+                </td>
+                <td className="detailsColumn">224 B</td>
+                <td className="detailsColumn">03/08/2024, 21:45</td>
               </tr>
             </tbody>
           </table>
