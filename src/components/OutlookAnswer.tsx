@@ -222,7 +222,7 @@ function OutlookAnswerWindow({
       <div ref={nodeRef} className="window absolute" style={{ width: "850px", height: "700px" }}>
         <div className="title-bar" id="outlook-window-title-bar">
           <div className="title-bar-text flex items-center">
-            <img src={OutlookIcon.src} />
+            <img src={OutlookIcon.src} className="w-4" />
             <p>Outlook Express - Mensaje Nuevo</p>
           </div>
           <div className="title-bar-controls">
