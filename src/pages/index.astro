@@ -4,12 +4,14 @@ import "../styles/global.css";
 
 import ContainerLayout from "../layouts/ContainerLayout.astro";
 import FileExplorer from "./fileExplorer";
+
+const pageDescription = "You is not the only you out there, see the real you inside you.";
+const pageOgImage = "/og.webp";
+const pageUrl = Astro.url.href;
 ---
 
-<ContainerLayout title="ᴋᴇʀɴᴇʟ ᴘᴀɴɪᴄ">
-  <p class="absolute bottom-0 right-4">
-    Y29uZWN0YWRvIHBvciBqYW1lcyBAZXJhbWFqYWFydmk=
-  </p>
+<ContainerLayout title="ᴋᴇʀɴᴇʟ ᴘᴀɴɪᴄ" description={pageDescription} ogImage={pageOgImage} url={pageUrl}>
+  <p class="absolute bottom-0 right-4">Y29uZWN0YWRvIHBvciBqYW1lcyBAZXJhbWFqYWFydmk=</p>
 
   <span class="hidden lg:block">
     <FileExplorer client:only="react" />
