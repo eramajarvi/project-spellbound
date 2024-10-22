@@ -18,6 +18,7 @@ function OutlookAnswerWindow({
   warningWindowVisibility,
   RoverStart,
   RoverStop,
+  eyeWindowVisibility,
 }) {
   const nodeRef = React.useRef(null);
 
@@ -32,6 +33,7 @@ function OutlookAnswerWindow({
   const { roverStopSignal, setRoverStopSignal } = RoverStop;
 
   const { isWarningWindowVisible, setWarningWindowVisible } = warningWindowVisibility;
+  const { isEyeWindowVisible, setEyeWindowVisible } = eyeWindowVisibility;
 
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const [imageFile, setImageFile] = React.useState<File | null>(null);
@@ -203,6 +205,7 @@ function OutlookAnswerWindow({
         setDownloadButtonStyle("");
         setCanDownload(true);
         setCanAttach(true);
+        setEyeWindowVisible(true);
       } else {
         console.error("Error during upload", xhr.statusText);
       }

@@ -3,10 +3,10 @@ import OutlookWindow from "./Outlook";
 import OutlookAnswerWindow from "./OutlookAnswer";
 import RoverWindow from "./RoverWindow";
 import WarningWindow from "./WarningWindow";
+import EyeWindow from "./EyeWindow";
 
 export default function Desktop() {
-  const [isOutlookAnswerVisible, setOutlookAnswerVisible] =
-    React.useState(false);
+  const [isOutlookAnswerVisible, setOutlookAnswerVisible] = React.useState(false);
   const OutlookAnswerWindowVisibility = {
     isOutlookAnswerVisible,
     setOutlookAnswerVisible,
@@ -19,8 +19,10 @@ export default function Desktop() {
   const [roverStopSignal, setRoverStopSignal] = React.useState(false);
   const RoverStop = { roverStopSignal, setRoverStopSignal };
 
-  const [isWarningWindowVisible, setWarningWindowVisible] =
-    React.useState(false);
+  const [isEyeWindowVisible, setEyeWindowVisible] = React.useState(false);
+  const eyeWindowVisibility = { isEyeWindowVisible, setEyeWindowVisible };
+
+  const [isWarningWindowVisible, setWarningWindowVisible] = React.useState(false);
   const warningWindowVisibility = {
     isWarningWindowVisible,
     setWarningWindowVisible,
@@ -42,16 +44,15 @@ export default function Desktop() {
           warningWindowVisibility={warningWindowVisibility}
           RoverStart={RoverStart}
           RoverStop={RoverStop}
+          eyeWindowVisibility={eyeWindowVisibility}
         />
       ) : null}
 
-      {isRoverWindowVisible ? (
-        <RoverWindow RoverStart={RoverStart} RoverStop={RoverStop} />
-      ) : null}
+      {isRoverWindowVisible ? <RoverWindow RoverStart={RoverStart} RoverStop={RoverStop} /> : null}
 
-      {isWarningWindowVisible ? (
-        <WarningWindow warningWindowVisibility={warningWindowVisibility} />
-      ) : null}
+      {isWarningWindowVisible ? <WarningWindow warningWindowVisibility={warningWindowVisibility} /> : null}
+
+      {isEyeWindowVisible ? <EyeWindow eyeWindowVisibility={eyeWindowVisibility} /> : null}
     </>
   );
 }
