@@ -7,6 +7,8 @@ import EyeWindow from "./EyeWindow";
 import PermissionDeniedWindow from "./PermissionDenied";
 import ShaderWrapper from "./ShaderWrapper";
 
+import BlissBg from "../assets/Bliss.jpg";
+
 export default function Desktop() {
   const [isOutlookAnswerVisible, setOutlookAnswerVisible] = React.useState(false);
   const OutlookAnswerWindowVisibility = {
@@ -49,7 +51,10 @@ export default function Desktop() {
       </div>
 
       {isBlissBgVisible ? (
-        <div className="absolute h-full w-full bg-[url('src/assets/Bliss.jpg')] bg-no-repeat bg-cover" />
+        <div
+          className="absolute h-full w-full bg-no-repeat bg-cover"
+          style={{ backgroundImage: `url(${BlissBg.src})` }}
+        />
       ) : null}
 
       <OutlookWindow
