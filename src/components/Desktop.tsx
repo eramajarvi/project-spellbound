@@ -4,6 +4,7 @@ import OutlookAnswerWindow from "./OutlookAnswer";
 import RoverWindow from "./RoverWindow";
 import WarningWindow from "./WarningWindow";
 import EyeWindow from "./EyeWindow";
+import PermissionDeniedWindow from "./PermissionDenied";
 import ShaderWrapper from "./ShaderWrapper";
 
 export default function Desktop() {
@@ -35,6 +36,9 @@ export default function Desktop() {
   const [isShaderVisible, setIsShaderVisible] = React.useState(false);
   const shaderVisibility = { isShaderVisible, setIsShaderVisible };
 
+  const [isPermissionDeniedVisible, setPerimissionDenied] = React.useState(false);
+  const permissionDeniedVisibility = { isPermissionDeniedVisible, setPerimissionDenied };
+
   return (
     <>
       <div className="crt">
@@ -51,7 +55,12 @@ export default function Desktop() {
       <OutlookWindow
         OutlookAnswerWindowVisibility={OutlookAnswerWindowVisibility}
         warningWindowVisibility={warningWindowVisibility}
+        permissionDeniedVisibility={permissionDeniedVisibility}
       />
+
+      {isPermissionDeniedVisible ? (
+        <PermissionDeniedWindow permissionDeniedVisibility={permissionDeniedVisibility} />
+      ) : null}
 
       {isOutlookAnswerVisible ? (
         <OutlookAnswerWindow
