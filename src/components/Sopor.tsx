@@ -1,7 +1,7 @@
 import "../styles/fileExplorer.css";
 
 import soporImage from "../assets/sopor.webp";
-import inboxIcon from "../assets/inbox.png";
+import OutlookIcon from "../assets/outlook.png";
 
 import React, { useEffect } from "react";
 import Draggable from "react-draggable";
@@ -44,7 +44,7 @@ function Sopor({ soporVisibility, desktopVisibility }) {
           <div className="window-body relative inline-flex flex-col">
             <div className="flex items-center p-1">
               <div className="">
-                <img src={inboxIcon.src} className="pixelated" />
+                <img src={OutlookIcon.src} className="pixelated" />
               </div>
 
               <div className="ml-3 w-64">
