@@ -21,6 +21,7 @@ function OutlookAnswerWindow({
   eyeWindowVisibility,
   shaderVisibility,
   blissBgVisibility,
+  RoverError,
 }) {
   const nodeRef = React.useRef(null);
 
@@ -34,6 +35,7 @@ function OutlookAnswerWindow({
   const { isRoverWindowVisible, setRoverWindowVisible } = RoverWindowVisibility;
   const { roverStartSignal, setRoverStartSignal } = RoverStart;
   const { roverStopSignal, setRoverStopSignal } = RoverStop;
+  const { roverErrorSignal, setRoverErrorSignal } = RoverError;
 
   const { isWarningWindowVisible, setWarningWindowVisible } = warningWindowVisibility;
   const { isEyeWindowVisible, setEyeWindowVisible } = eyeWindowVisibility;
@@ -44,6 +46,7 @@ function OutlookAnswerWindow({
   const [fileIsPicked, setFileIsPicked] = React.useState(false);
   const [imageURL, setImageURL] = React.useState(null);
   const [transformedImageURL, setTransformedImageURL] = React.useState(null);
+  const [errorOnTransformation, setErrorOnTransformation] = React.useState(null);
 
   const [progress, setProgress] = React.useState(0);
   const [canDownload, setCanDownload] = React.useState(false);
@@ -62,6 +65,7 @@ function OutlookAnswerWindow({
       setFileIsPicked(true);
       setRoverWindowVisible(true);
       setRoverStartSignal(true);
+      setErrorOnTransformation(null);
       setImageURL(URL.createObjectURL(event.target.files[0]));
 
       const file = event.target.files[0];
@@ -133,7 +137,6 @@ function OutlookAnswerWindow({
         // Revisar que hacer despues con el archivo seleccionado:
         getCloudinarySignature(paramsToSign)
           .then((signature) => {
-            console.log("signing params with: " + EAGER_TRANSFORMATION);
             // Use the signature to upload your media to Cloudinary
             uploadToCloudinary(file, signature, paramsToSign);
           })
@@ -190,7 +193,7 @@ function OutlookAnswerWindow({
     xhr.onreadystatechange = (e) => {
       if (xhr.readyState == 4 && xhr.status == 200) {
         const response = JSON.parse(xhr.responseText);
-
+        setErrorOnTransformation(null);
         setImageFile(response.secure_url);
       }
     };
@@ -202,15 +205,33 @@ function OutlookAnswerWindow({
         // Success
         const imageTransformed = JSON.parse(xhr.responseText);
         const imageTransformedURL = imageTransformed.eager[0].secure_url;
-        setTransformedImageURL(imageTransformedURL);
-        setRoverStartSignal(false);
-        setRoverStopSignal(true);
-        setDownloadButtonStyle("");
-        setCanDownload(true);
-        setCanAttach(true);
-        setEyeWindowVisible(true);
-        setIsShaderVisible(true);
-        setBlissBgVisible(false);
+
+        if (imageTransformed.eager[0]?.exception?.status === 400) {
+          // If the transformation fails, catch the error in the UI
+          setErrorOnTransformation(true);
+          setRoverStartSignal(false);
+          setRoverErrorSignal(true);
+          setRoverStopSignal(false);
+          setTransformedImageURL(null);
+          setDownloadButtonStyle("grayscale");
+          setCanDownload(false);
+          setCanAttach(true);
+          setEyeWindowVisible(false);
+          setIsShaderVisible(false);
+          setBlissBgVisible(true);
+        } else {
+          setErrorOnTransformation(false);
+          setTransformedImageURL(imageTransformedURL);
+          setRoverStartSignal(false);
+          setRoverStopSignal(true);
+          setRoverErrorSignal(false);
+          setDownloadButtonStyle("");
+          setCanDownload(true);
+          setCanAttach(true);
+          setEyeWindowVisible(true);
+          setIsShaderVisible(true);
+          setBlissBgVisible(false);
+        }
       } else {
         console.error("Error during upload", xhr.statusText);
       }
@@ -309,6 +330,16 @@ function OutlookAnswerWindow({
 
           {/* Email body */}
           <div className="m-2 bg-white overflow-y-auto h-[480px] p-1">
+            {errorOnTransformation ? (
+              <div className="p-4 text-base">
+                <code>Respuesta automática del sistema:</code>
+                <br />
+                <code>
+                  No existen entidades en la imagen que se ha analizado. Por favor intente con otra imagen diferente.
+                </code>
+              </div>
+            ) : null}
+
             {transformedImageURL ? (
               <div className="p-4 text-base">
                 <code>Respuesta automática del sistema: Este es el verdadero tú::::</code>

@@ -10,10 +10,11 @@ import Rover07 from "../assets/rover-07.mp4";
 
 import { useCompletion } from "ai/react";
 
-function RoverWindow({ RoverStart, RoverStop }) {
+function RoverWindow({ RoverStart, RoverStop, RoverError }) {
   const nodeRef = React.useRef(null);
   const { roverStartSignal, setRoverStartSignal } = RoverStart;
   const { roverStopSignal, setRoverStopSignal } = RoverStop;
+  const { roverErrorSignal, setRoverErrorSignal } = RoverError;
 
   const [currentAssetIndex, setCurrentAssetIndex] = useState(0);
 
@@ -58,7 +59,7 @@ function RoverWindow({ RoverStart, RoverStop }) {
     fetchData();
 
     // Set an interval to fetch data every 12 seconds
-    const intervalId = setInterval(fetchData, 25000);
+    const intervalId = setInterval(fetchData, 20000);
 
     // Cleanup function to clear the interval
     return () => clearInterval(intervalId);
@@ -81,6 +82,24 @@ function RoverWindow({ RoverStart, RoverStop }) {
 
     fetchData();
   }, [roverStopSignal]);
+
+  // When the image has been transformed and got response, generate this AI response to the user
+  useEffect(() => {
+    // Define the async function
+    //if (!roverStartSignal) return;
+
+    const fetchData = async () => {
+      try {
+        const response = await complete(
+          "La imagen se ha terminado de cargar pero ha ocurrido un error al procesarla porque no hay entidades, debo usar una diferente."
+        );
+      } catch (err) {
+      } finally {
+      }
+    };
+
+    fetchData();
+  }, [roverErrorSignal]);
 
   return (
     <Draggable

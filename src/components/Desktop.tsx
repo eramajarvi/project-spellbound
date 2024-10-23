@@ -22,6 +22,8 @@ export default function Desktop() {
   const RoverStart = { roverStartSignal, setRoverStartSignal };
   const [roverStopSignal, setRoverStopSignal] = React.useState(false);
   const RoverStop = { roverStopSignal, setRoverStopSignal };
+  const [roverErrorSignal, setRoverErrorSignal] = React.useState(false);
+  const RoverError = { roverErrorSignal, setRoverErrorSignal };
 
   const [isEyeWindowVisible, setEyeWindowVisible] = React.useState(false);
   const eyeWindowVisibility = { isEyeWindowVisible, setEyeWindowVisible };
@@ -77,10 +79,13 @@ export default function Desktop() {
           eyeWindowVisibility={eyeWindowVisibility}
           shaderVisibility={shaderVisibility}
           blissBgVisibility={blissBgVisibility}
+          RoverError={RoverError}
         />
       ) : null}
 
-      {isRoverWindowVisible ? <RoverWindow RoverStart={RoverStart} RoverStop={RoverStop} /> : null}
+      {isRoverWindowVisible ? (
+        <RoverWindow RoverStart={RoverStart} RoverStop={RoverStop} RoverError={RoverError} />
+      ) : null}
 
       {isWarningWindowVisible ? <WarningWindow warningWindowVisibility={warningWindowVisibility} /> : null}
 
