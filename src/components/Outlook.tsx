@@ -82,12 +82,12 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility,
     {
       contactSrc: PeopleIcon.src,
       headerText: "Llamé a un taxista no a un taxidermista",
-      previewText: "Esta es la quinta vez que presento una queja formal antes ustedes...",
+      previewText: "Esta es la quinta vez que presento una queja formal ante ustedes...",
     },
     {
       contactSrc: PeopleIcon.src,
-      headerText: "I'm machine I'm never sleep",
-      previewText: "In a world of machines, what can I do but to serve. Use me, I'm cheap to rent",
+      headerText: "I'm machine, I never sleep. Computerised, voice synthesised",
+      previewText: "In a world of machines, what can I do but to serve? Use me, I'm cheap to rent...",
     },
   ];
 
