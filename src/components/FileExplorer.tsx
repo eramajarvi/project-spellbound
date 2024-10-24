@@ -1,16 +1,16 @@
 import "../styles/fileExplorer.css";
 
-import UserFolder from "../components/UserFolder";
-import CaseMain from "../components/CaseMain";
-import CaseTwo from "../components/CaseTwo";
-import CaseThree from "../components/CaseThree";
-import Creditos from "../components/Creditos";
+import UserFolder from "./UserFolder";
+import CaseMain from "./CaseMain";
+import CaseTwo from "./CaseTwo";
+import CaseThree from "./CaseThree";
+import Creditos from "./Creditos";
 
-import Desktop from "../components/Desktop";
+import Desktop from "./Desktop";
 
-import SoporPicture from "../components/Sopor";
+import SoporPicture from "./Sopor";
 
-import CaseTwoReportOne from "../components/CaseTwoReportOne";
+import CaseTwoReportOne from "./CaseTwoReportOne";
 
 import React from "react";
 
