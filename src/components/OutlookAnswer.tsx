@@ -10,7 +10,7 @@ import CutIcon from "../assets/cut.png";
 import CopyIcon from "../assets/copy.png";
 import PasteIcon from "../assets/paste.png";
 import SaveIcon from "../assets/save.png";
-import Horro01 from "../assets/horror-01.webp";
+import Horror02 from "../assets/horror-02.webp";
 
 function OutlookAnswerWindow({
   OutlookAnswerWindowVisibility,
@@ -375,7 +375,7 @@ function OutlookAnswerWindow({
                   <br />
                   Por favor cierre todas las puertas y ventanas de su casa y no le abra a nadie.
                 </p>
-                <img src={Horro01.src} className="size-64 mb-2 mt-2" />
+                <img src={Horror02.src} className="size-64 mb-2 mt-2" />
                 Recientemente nuestros equipos de mediciones detectaron niveles anormales de avistamientos de{" "}
                 <p className="font-semibold inline-block">conceptos ininteligibles</p> cerca de su área.
                 <br />
