@@ -1,6 +1,7 @@
 import "../styles/fileExplorer.css";
 
 import soporImage from "../assets/sopor.webp";
+import Horror02 from "../assets/horror-02.webp";
 import OutlookIcon from "../assets/outlook.png";
 
 import React, { useEffect } from "react";
@@ -15,7 +16,7 @@ function Sopor({ soporVisibility, desktopVisibility }) {
   return (
     <>
       <div ref={nodeRef} className="flex relative fileExplorer">
-        <img src={soporImage.src} />
+        <img src={Horror02.src} />
       </div>
 
       <Draggable
