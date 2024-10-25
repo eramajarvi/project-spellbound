@@ -206,7 +206,10 @@ function OutlookAnswerWindow({
         const imageTransformed = JSON.parse(xhr.responseText);
         const imageTransformedURL = imageTransformed.eager[0].secure_url;
 
-        if (imageTransformed.eager[0]?.exception?.status === 400) {
+        if (
+          imageTransformed.eager[0]?.exception?.status === 400 ||
+          imageTransformed.eager[0]?.exception?.status === 423
+        ) {
           // If the transformation fails, catch the error in the UI
           setErrorOnTransformation(true);
           setRoverStartSignal(false);
