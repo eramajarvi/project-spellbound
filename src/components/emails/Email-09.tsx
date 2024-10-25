@@ -11,7 +11,7 @@ export default function Email09() {
           <div className="p-1 w-96">
             <p className="font-bold text-lg leading-5">Llamé a un taxista no a un taxidermista</p>
 
-            <p className="font-mono">notifications@fbi.gov</p>
+            <p className="font-mono">user683h34bjk@umail.co</p>
 
             <p className="font-extrabold">Recibido: justo ahora</p>
           </div>

@@ -14,7 +14,7 @@ export default function Email03() {
               Estamos preocupados por ti, tu madre no hace sino llorar todo el día
             </p>
 
-            <p className="font-mono">notifications@fbi.gov</p>
+            <p className="font-mono">notanentity@ymail.com</p>
 
             <p className="font-extrabold">Recibido: justo ahora</p>
           </div>

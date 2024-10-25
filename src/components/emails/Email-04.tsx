@@ -11,7 +11,7 @@ export default function Email04() {
           <div className="p-1 w-96">
             <p className="font-bold text-lg leading-5">naranja araña administrador dictadura entidad tubería</p>
 
-            <p className="font-mono">notifications@fbi.gov</p>
+            <p className="font-mono">user246tfr2@yopmail.co</p>
 
             <p className="font-extrabold">Recibido: justo ahora</p>
           </div>

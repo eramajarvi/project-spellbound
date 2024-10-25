@@ -11,7 +11,7 @@ export default function Email05() {
           <div className="p-1 w-96">
             <p className="font-bold text-lg leading-5">Vomistar te envía la factura de tu servicio</p>
 
-            <p className="font-mono">notifications@fbi.gov</p>
+            <p className="font-mono">facturas@vomistar.com</p>
 
             <p className="font-extrabold">Recibido: justo ahora</p>
           </div>
