@@ -46,7 +46,6 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility,
   // Function to handle the email selection change
   const handleEmailSelection = (emailId) => {
     setSelectedEmail(emailId);
-    console.log("Selected email:" + emailId);
   };
 
   // Dictionary: Remote folder items elements
