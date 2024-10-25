@@ -20,9 +20,7 @@ export default function Email02() {
         </div>
 
         <div className="p-1">
-          <div className="text-sm">
-            Email02. Espere más instrucciones de nuestra parte una vez nos aseguremos que está bien.
-          </div>
+          <div className="text-sm">Mira</div>
         </div>
       </div>
     </>

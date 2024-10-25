@@ -13,13 +13,13 @@ export default function Email10() {
 
             <p className="font-mono">machine@theatreoftragedy.com</p>
 
-            <p className="font-extrabold">Recibido: justo ahora</p>
+            <p className="font-extrabold">Recibido: 22/01/2001 00:01</p>
           </div>
         </div>
 
         <div className="p-1">
           <div className="text-sm">
-            Look up head
+            Look up here
             <br />
             Look down there
             <br />
@@ -51,7 +51,7 @@ export default function Email10() {
             <br />
             Computerised
             <br />
-            Voice synthesised
+            Voice synthesized
             <br />
             Call me the mech man
             <br />

@@ -11,7 +11,7 @@ export default function Email08() {
           <div className="p-1 w-96">
             <p className="font-bold text-lg leading-5">Reenvía este email a 256 personas diferentes o ya verás</p>
 
-            <p className="font-mono">notifications@fbi.gov</p>
+            <p className="font-mono">anon@ymail.com</p>
 
             <p className="font-extrabold">Recibido: justo ahora</p>
           </div>
@@ -19,7 +19,7 @@ export default function Email08() {
 
         <div className="p-1">
           <div className="text-sm">
-            Email08. Espere más instrucciones de nuestra parte una vez nos aseguremos que está bien.
+            Haz caído en la maldición del príncipe nigeriano, ahora debes reenviar este correo a todos tus contactos.
           </div>
         </div>
       </div>

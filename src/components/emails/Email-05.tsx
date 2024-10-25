@@ -19,7 +19,23 @@ export default function Email05() {
 
         <div className="p-1">
           <div className="text-sm">
-            Email05. Espere más instrucciones de nuestra parte una vez nos aseguremos que está bien.
+            Estimado cliente, adjunto encontrará la factura para este mes.
+            <br />
+            <br />
+            <p className="font-semibold">Total a pagar:</p>
+            $5 millones de dólares
+            <br />
+            <br />
+            <p className="font-semibold">Fecha límite de pago:</p>
+            Ayer
+            <br />
+            <br />
+            <p className="font-semibold">Aviso:</p>
+            Dado que se ha tartado más de 10 segundos en pagarnos, ahora le demandaremos y haremos un reporte a todas
+            las centrales de riesgo en contra suya.
+            <br />
+            <br />
+            Gracias por usar nuestros servicios.
           </div>
         </div>
       </div>

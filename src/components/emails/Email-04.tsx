@@ -19,7 +19,15 @@ export default function Email04() {
 
         <div className="p-1">
           <div className="text-sm">
-            Email04. Espere más instrucciones de nuestra parte una vez nos aseguremos que está bien.
+            llamé a un taxidermista no a un taxista, me dijo que tal vez se había equivocado con la dirección.
+            <br />
+            <br />
+            guitarra océano trompeta zanahoria eclipse mapa murciélago pluma tornado chocolate colibrí montaña reloj
+            champiñón caracol nebulosa tambor esponja fósforo pirámide luz dinosaurio papel tren estrella bocadillo
+            orquídea globo laberinto escalera bicicleta mármol cangrejo rayo calcetín jengibre pez pintura gorra
+            relámpago tamboril faro jardín serpiente guitarra mermelada cristal nube almohada volcán espiral tambor
+            perro relojería mariposa tambor metal planeta niebla armario platano río escultura mariposa rompecabezas
+            bosque estrella sandía ratón tambor viento tambor catamarán
           </div>
         </div>
       </div>

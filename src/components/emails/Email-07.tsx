@@ -11,7 +11,7 @@ export default function Email07() {
           <div className="p-1 w-96">
             <p className="font-bold text-lg leading-5">¿Te acuerdas de mi? Ya ha pasado mucho tiempo</p>
 
-            <p className="font-mono">notifications@fbi.gov</p>
+            <p className="font-mono">anon@yopmail.com</p>
 
             <p className="font-extrabold">Recibido: justo ahora</p>
           </div>
@@ -19,7 +19,26 @@ export default function Email07() {
 
         <div className="p-1">
           <div className="text-sm">
-            Email07. Espere más instrucciones de nuestra parte una vez nos aseguremos que está bien.
+            No se cómo he podido extrañarte tanto, así que te envío este poema que vi en una película llamada Cuatro
+            bodas y un funeral:
+            <br />
+            <br />
+            <code>
+              él era mi norte mi sur mi este mi oeste
+              <br />
+              mi semana laboral y mi descanso dominical
+              <br />
+              mi medio día mi media noche mis palabras mi canción
+              <br />
+              creí que este amor sería para siempre: me equivoqué
+              <br />
+              ya no quiero las estrellas: apáguenlas todas
+              <br />
+              empaquen la luna y desarmen el sol
+              <br />
+              desborden el océano y levanten los bosques
+              <br /> ya que nada ahora puede tener sentido
+            </code>
           </div>
         </div>
       </div>
