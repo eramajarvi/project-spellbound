@@ -20,7 +20,18 @@ import DeleteIcon from "../assets/delete.ico";
 import RemoteFolder from "../assets/remotefolder.png";
 import ArchiveIcon from "../assets/archiveit.png";
 
+import { EmailTemplate } from "./emails/EmailTemplate";
+
 import Email01 from "./emails/Email-01";
+import Email02 from "./emails/Email-02";
+import Email03 from "./emails/Email-03";
+import Email04 from "./emails/Email-04";
+import Email05 from "./emails/Email-05";
+import Email06 from "./emails/Email-06";
+import Email07 from "./emails/Email-07";
+import Email08 from "./emails/Email-08";
+import Email09 from "./emails/Email-09";
+import Email10 from "./emails/Email-10";
 import PermissionDeniedWindow from "./PermissionDenied";
 
 function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility, permissionDeniedVisibility }) {
@@ -29,6 +40,14 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility,
   const { isOutlookAnswerVisible, setOutlookAnswerVisible } = OutlookAnswerWindowVisibility;
   const { isWarningWindowVisible, setWarningWindowVisible } = warningWindowVisibility;
   const { isPermissionDeniedVisible, setPerimissionDenied } = permissionDeniedVisibility;
+
+  const [selectedEmail, setSelectedEmail] = useState(1);
+
+  // Function to handle the email selection change
+  const handleEmailSelection = (emailId) => {
+    setSelectedEmail(emailId);
+    console.log("Selected email:" + emailId);
+  };
 
   // Dictionary: Remote folder items elements
   const RemoteFolderItems = [
@@ -52,54 +71,68 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility,
 
   const EmailsItems = [
     {
+      id: 1,
       contactSrc: PeopleIcon.src,
       headerText: "[URGENTE] Avistamientos detectados cerca de su área",
       previewText: "Usted se encuentra en peligro, por favor revise este email para...",
       isSelected: true,
     },
     {
+      id: 2,
+      contactSrc: PeopleIcon.src,
+      headerText: "[NUEVO] ¡Ya están aquí los resultados de los proyectos de la Spooky AI Hackathon de Cloudinary!",
+      previewText: "Puedes ver aquí los proyectos geniales hechos por la comunidad",
+    },
+    {
+      id: 3,
       contactSrc: PeopleIcon.src,
       headerText: "Estamos preocupados por ti, tu madre no hace sino llorar...",
       previewText: "Por favor contéstanos el teléfono.",
-      isSelected: false,
     },
     {
+      id: 4,
       contactSrc: PeopleIcon.src,
       headerText: "naranja araña administrador dictadura entidad tubería",
       previewText: "llamé a un taxista no a un taxidermista; me dijo que tal..",
       isSelected: false,
     },
     {
+      id: 5,
       contactSrc: PeopleIcon.src,
       headerText: "Vomistar te envía la factura de tu servicio",
       previewText: "Estimado cliente, adjunto encontrará la factura para este...",
       isSelected: false,
     },
     {
+      id: 6,
       contactSrc: PeopleIcon.src,
       headerText: "There were a segmentation fault caused by your last commit",
       previewText: "Please fix this disaster, we're counting on you to get the new...",
       isSelected: false,
     },
     {
+      id: 7,
       contactSrc: PeopleIcon.src,
       headerText: "¿Te acuerdas de mi? Ya ha pasado mucho tiempo",
       previewText: "No se cómo he podido extrañarte tanto, así que te envío este...",
       isSelected: false,
     },
     {
+      id: 8,
       contactSrc: PeopleIcon.src,
       headerText: "Reenvía este email a 256 personas diferentes o ya verás",
       previewText: "Haz caído en la maldición del príncipe nigeriano, ahora debes...",
       isSelected: false,
     },
     {
+      id: 9,
       contactSrc: PeopleIcon.src,
       headerText: "Llamé a un taxista no a un taxidermista",
       previewText: "Esta es la quinta vez que presento una queja formal ante ustedes...",
       isSelected: false,
     },
     {
+      id: 10,
       contactSrc: PeopleIcon.src,
       headerText: "I'm machine, I never sleep. Computerised, voice synthesised",
       previewText: "In a world of machines, what can I do but to serve? Use me, I'm cheap to rent...",
@@ -238,8 +271,8 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility,
                   contactSrc={item.contactSrc}
                   headerText={item.headerText}
                   previewText={item.previewText}
-                  onClick={() => setPerimissionDenied(true)}
-                  isSelected={item.isSelected}
+                  onClick={() => handleEmailSelection(item.id)}
+                  isSelected={selectedEmail === item.id}
                 />
               ))}
             </ul>
@@ -259,7 +292,16 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility,
             </div>
 
             <div>
-              <Email01 />
+              {selectedEmail === 1 && <Email01 />}
+              {selectedEmail === 2 && <Email02 />}
+              {selectedEmail === 3 && <Email03 />}
+              {selectedEmail === 4 && <Email04 />}
+              {selectedEmail === 5 && <Email05 />}
+              {selectedEmail === 6 && <Email06 />}
+              {selectedEmail === 7 && <Email07 />}
+              {selectedEmail === 8 && <Email08 />}
+              {selectedEmail === 9 && <Email09 />}
+              {selectedEmail === 10 && <Email10 />}
             </div>
           </div>
         </div>
