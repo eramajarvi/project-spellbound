@@ -51,43 +51,57 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility,
   const EmailsItems = [
     {
       contactSrc: PeopleIcon.src,
+      headerText: "[URGENTE] Avistamientos detectados cerca de su área",
+      previewText: "Usted se encuentra en peligro, por favor revise este email para...",
+      isSelected: true,
+    },
+    {
+      contactSrc: PeopleIcon.src,
       headerText: "Estamos preocupados por ti, tu madre no hace sino llorar...",
       previewText: "Por favor contéstanos el teléfono.",
+      isSelected: false,
     },
     {
       contactSrc: PeopleIcon.src,
       headerText: "naranja araña administrador dictadura entidad tubería",
       previewText: "llamé a un taxista no a un taxidermista; me dijo que tal..",
+      isSelected: false,
     },
     {
       contactSrc: PeopleIcon.src,
       headerText: "Vomistar te envía la factura de tu servicio",
       previewText: "Estimado cliente, adjunto encontrará la factura para este...",
+      isSelected: false,
     },
     {
       contactSrc: PeopleIcon.src,
       headerText: "There were a segmentation fault caused by your last commit",
       previewText: "Please fix this disaster, we're counting on you to get the new...",
+      isSelected: false,
     },
     {
       contactSrc: PeopleIcon.src,
       headerText: "¿Te acuerdas de mi? Ya ha pasado mucho tiempo",
       previewText: "No se cómo he podido extrañarte tanto, así que te envío este...",
+      isSelected: false,
     },
     {
       contactSrc: PeopleIcon.src,
       headerText: "Reenvía este email a 256 personas diferentes o ya verás",
       previewText: "Haz caído en la maldición del príncipe nigeriano, ahora debes...",
+      isSelected: false,
     },
     {
       contactSrc: PeopleIcon.src,
       headerText: "Llamé a un taxista no a un taxidermista",
       previewText: "Esta es la quinta vez que presento una queja formal ante ustedes...",
+      isSelected: false,
     },
     {
       contactSrc: PeopleIcon.src,
       headerText: "I'm machine, I never sleep. Computerised, voice synthesised",
       previewText: "In a world of machines, what can I do but to serve? Use me, I'm cheap to rent...",
+      isSelected: false,
     },
   ];
 
@@ -193,17 +207,6 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility,
           {/* Contenedor de emails */}
           <div className="w-72 ml-2 overflow-y-auto h-[650px]">
             <ul className="tree-view">
-              {/* Email 1 */}
-              <li className="w-60 flex items-center bg-[#3d64bd] text-white p-1.5">
-                <div className="w-8">
-                  <img className="pixelated" src={PeopleIcon.src} />
-                </div>
-                <div className="ml-3">
-                  <p className="leading-4 font-semibold">[URGENTE] Avistamientos detectados cerca de su área</p>
-                  <p className="leading-4">Usted se encuentra en peligro, por favor revise este email para...</p>
-                </div>
-              </li>
-
               {EmailsItems.map((item, index) => (
                 <EmailsListItem
                   key={index}
@@ -211,6 +214,7 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility,
                   headerText={item.headerText}
                   previewText={item.previewText}
                   onClick={() => setPerimissionDenied(true)}
+                  isSelected={item.isSelected}
                 />
               ))}
             </ul>
