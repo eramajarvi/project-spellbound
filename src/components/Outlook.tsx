@@ -86,7 +86,7 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility,
     {
       id: 3,
       contactSrc: PeopleIcon.src,
-      headerText: "Estamos preocupados por ti, tu madre no hace sino llorar...",
+      headerText: "Estamos preocupados por ti, tu madre no hace sino llorar todo el día",
       previewText: "Por favor contéstanos el teléfono.",
     },
     {
