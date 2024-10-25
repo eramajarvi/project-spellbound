@@ -42,77 +42,77 @@ export default function Email02() {
             <br />
             <p className="font-semibold">La Purga de Halloween</p>
             <a href="https://lapurga.vercel.app/" target="_blank">
-              <img src={LaPurga.src} className="w-128 mb-2 mt-2" />
+              <img src={LaPurga.src} className="w-128 mb-2 mt-2" loading="lazy" />
             </a>
             <br />
             <p className="font-semibold">Hauntedfolio 👻</p>
             <a href="https://hauntedfolio.vercel.app/" target="_blank">
-              <img src={Hauntedfolio.src} className="w-128 mb-2 mt-2" />
+              <img src={Hauntedfolio.src} className="w-128 mb-2 mt-2" loading="lazy" />
             </a>
             <br />
             <p className="font-semibold">GhostSpotters</p>
             <a href="https://ghost-spotters.vercel.app/" target="_blank">
-              <img src={GhostSpotters.src} className="w-128 mb-2 mt-2" />
+              <img src={GhostSpotters.src} className="w-128 mb-2 mt-2" loading="lazy" />
             </a>
             <br />
             <p className="font-semibold">Spooky Customize AI</p>
             <a href="https://spooky-customize-ai.vercel.app/" target="_blank">
-              <img src={SpookyCustomize.src} className="w-128 mb-2 mt-2" />
+              <img src={SpookyCustomize.src} className="w-128 mb-2 mt-2" loading="lazy" />
             </a>
             <br />
             <p className="font-semibold">VHS Story</p>
             <a href="https://vhs-story.vercel.app/" target="_blank">
-              <img src={VHSStory.src} className="w-128 mb-2 mt-2" />
+              <img src={VHSStory.src} className="w-128 mb-2 mt-2" loading="lazy" />
             </a>
             <br />
             <p className="font-semibold">Spectral Vision</p>
             <a href="https://spectral-vision.vercel.app/" target="_blank">
-              <img src={SpectralVision.src} className="w-128 mb-2 mt-2" />
+              <img src={SpectralVision.src} className="w-128 mb-2 mt-2" loading="lazy" />
             </a>
             <br />
             <p className="font-semibold">Ghouglify</p>
             <a href="https://ghouglify.art/" target="_blank">
-              <img src={Ghouglify.src} className="w-128 mb-2 mt-2" />
+              <img src={Ghouglify.src} className="w-128 mb-2 mt-2" loading="lazy" />
             </a>
             <br />
             <p className="font-semibold">Show Me Your Style</p>
             <a href="https://showmeyourstyle.vercel.app/" target="_blank">
-              <img src={ShowMeYourStyle.src} className="w-128 mb-2 mt-2" />
+              <img src={ShowMeYourStyle.src} className="w-128 mb-2 mt-2" loading="lazy" />
             </a>
             <br />
             <p className="font-semibold">Spooklens</p>
             <a href="https://spooklens.vercel.app/" target="_blank">
-              <img src={Spooklens.src} className="w-128 mb-2 mt-2" />
+              <img src={Spooklens.src} className="w-128 mb-2 mt-2" loading="lazy" />
             </a>
             <br />
             <p className="font-semibold">Spooky Hack</p>
             <a href="https://spooky-hack.jesusnoseq.com/" target="_blank">
-              <img src={SpookyHack.src} className="w-128 mb-2 mt-2" />
+              <img src={SpookyHack.src} className="w-128 mb-2 mt-2" loading="lazy" />
             </a>
             <br />
             <p className="font-semibold">Hackathon Cloudinary Project</p>
             <a href="https://hackathon-cloudinary.onrender.com/" target="_blank">
-              <img src={HackathonCloudinaryProject.src} className="w-128 mb-2 mt-2" />
+              <img src={HackathonCloudinaryProject.src} className="w-128 mb-2 mt-2" loading="lazy" />
             </a>
             <br />
             <p className="font-semibold">Hechizos Culinarios</p>
             <a href="https://culinary-spells-frontend.netlify.app/" target="_blank">
-              <img src={HechizosCulinarios.src} className="w-128 mb-2 mt-2" />
+              <img src={HechizosCulinarios.src} className="w-128 mb-2 mt-2" loading="lazy" />
             </a>
             <br />
             <p className="font-semibold">AIlloween</p>
             <a href="https://ailloween.netlify.app/" target="_blank">
-              <img src={Ailloween.src} className="w-128 mb-2 mt-2" />
+              <img src={Ailloween.src} className="w-128 mb-2 mt-2" loading="lazy" />
             </a>
             <br />
             <p className="font-semibold">Scary Letter</p>
             <a href="https://scary-stories.vercel.app/" target="_blank">
-              <img src={ScaryLetter.src} className="w-128 mb-2 mt-2" />
+              <img src={ScaryLetter.src} className="w-128 mb-2 mt-2" loading="lazy" />
             </a>
             <br />
             <p className="font-semibold">spookify</p>
             <a href="https://spookify.davidpoza.com/" target="_blank">
-              <img src={Spookify.src} className="w-128 mb-2 mt-2" />
+              <img src={Spookify.src} className="w-128 mb-2 mt-2" loading="lazy" />
             </a>
           </div>
         </div>
