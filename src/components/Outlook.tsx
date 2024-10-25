@@ -81,7 +81,7 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility,
       id: 2,
       contactSrc: PeopleIcon.src,
       headerText: "[NUEVO] ¡Ya están aquí los resultados de los proyectos de la Spooky AI Hackathon de Cloudinary!",
-      previewText: "Puedes ver aquí los proyectos geniales hechos por la comunidad",
+      previewText: "Explora los proyectos geniales hechos por la comunidad",
     },
     {
       id: 3,
