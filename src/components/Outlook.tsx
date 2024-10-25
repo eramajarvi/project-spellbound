@@ -3,6 +3,7 @@ import Draggable from "react-draggable";
 
 import { RemoteFolderListItem } from "./emails/RemoteFolderListItem";
 import { EmailsListItem } from "./emails/EmailsListItem";
+import { EmailToolBar } from "./emails/EmailToolBar";
 
 import OutlookIcon from "../assets/outlook.png";
 import LocalFoldersIcon from "../assets/localfolders.png";
@@ -17,6 +18,7 @@ import AnswerIcon from "../assets/answer.ico";
 import PrintIcon from "../assets/print.ico";
 import DeleteIcon from "../assets/delete.ico";
 import RemoteFolder from "../assets/remotefolder.png";
+import ArchiveIcon from "../assets/archiveit.png";
 
 import Email01 from "./emails/Email-01";
 import PermissionDeniedWindow from "./PermissionDenied";
@@ -102,6 +104,29 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility,
       headerText: "I'm machine, I never sleep. Computerised, voice synthesised",
       previewText: "In a world of machines, what can I do but to serve? Use me, I'm cheap to rent...",
       isSelected: false,
+    },
+  ];
+
+  const ButtonsToolbar = [
+    {
+      iconSrc: AnswerIcon,
+      buttonLabel: "Responder",
+      isAnwer: true,
+    },
+    {
+      iconSrc: DeleteIcon,
+      buttonLabel: "Eliminar",
+      isAnswer: false,
+    },
+    {
+      iconSrc: ArchiveIcon.src,
+      buttonLabel: "Archivar",
+      isAnswer: false,
+    },
+    {
+      iconSrc: PrintIcon,
+      buttonLabel: "Imprimir",
+      isAnswer: false,
     },
   ];
 
@@ -221,29 +246,21 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility,
           </div>
 
           <div className="w-[400px] ml-2">
-            <div className="h-10 flex items-center justify-center  mb-2">
-              <button className="flex items-center mx-0.5" onClick={() => setOutlookAnswerVisible(true)}>
-                <img src={AnswerIcon} className="size-6 -ml-2" />
-                <p>Responder</p>
-              </button>
-
-              <button className="flex items-center mx-1 inactive-text">
-                <img src={DeleteIcon} className="size-6 -ml-2 grayscale" />
-                <p>Eliminar</p>
-              </button>
-
-              <button className="flex items-center mx-1 inactive-text">
-                <img src={AnswerIcon} className="size-6 -ml-2 grayscale" />
-                <p>Archivar</p>
-              </button>
-
-              <button className="flex items-center mx-1 inactive-text">
-                <img src={PrintIcon} className="size-6 -ml-2 grayscale" />
-                <p>Imprimir</p>
-              </button>
+            <div className="flex">
+              {ButtonsToolbar.map((item, index) => (
+                <EmailToolBar
+                  key={index}
+                  iconSrc={item.iconSrc}
+                  buttonLabel={item.buttonLabel}
+                  isAnswer={item.isAnswer}
+                  onClick={() => setOutlookAnswerVisible(true)}
+                />
+              ))}
             </div>
 
-            <Email01 />
+            <div>
+              <Email01 />
+            </div>
           </div>
         </div>
       </div>
