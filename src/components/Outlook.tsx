@@ -111,7 +111,7 @@ function OutlookWindow({ OutlookAnswerWindowVisibility, warningWindowVisibility,
     {
       iconSrc: AnswerIcon,
       buttonLabel: "Responder",
-      isAnwer: true,
+      isAnswer: true,
     },
     {
       iconSrc: DeleteIcon,
